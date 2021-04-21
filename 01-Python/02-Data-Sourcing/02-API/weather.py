@@ -1,4 +1,4 @@
-# pylint: disable=missing-docstring
+# pylint: disable=missing-docstring, fixme
 
 import sys
 import urllib.parse
@@ -9,7 +9,14 @@ BASE_URI = "https://www.metaweather.com"
 
 def search_city(query):
     # TODO: Look for a given city and disambiguate between several candidates. Return one city (or None)
-    pass
+    url = BASE_URI + "/api/location/search/?query=" + query
+    response = requests.get(url).json()
+    try:
+        city = response[0]
+        print(f"{city})")
+        #print(f"{city['title']}: {city['woeid']} ({city['latt_long']})")
+    except IndexError:
+        print(f"Sorry, MetaWeather does not know abour {query}...")
 
 
 def weather_forecast(woeid):
