@@ -74,7 +74,7 @@ except BaseException:
 
 yourname = None
 
-if not yourname:
+if yourname is None:
     print("please define your name, il will be used as a parameter to log")
 
 for model in ["linear", "Randomforest"]:
