@@ -227,4 +227,4 @@ mlproject-computedist --help
 mlproject-computedist --coords 48.865070 2.380009 48.235070 2.393409
 ```
 
-To go further on parsing arguments, check [that link](https://www.sicara.ai/blog/2018-12-18-perfect-command-line-interfaces-python)
+To go further on parsing arguments, check [that link](https://realpython.com/python-command-line-arguments/)
