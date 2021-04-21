@@ -1,5 +1,3 @@
-import datetime
-import os
 from google.cloud import storage
 import pandas as pd
 from sklearn import linear_model
@@ -47,7 +45,6 @@ MODEL_VERSION = 'v1'
 
 def get_data():
     """method to get the training data (or a portion of it) from google cloud bucket"""
-    client = storage.Client()
     df = pd.read_csv(f"gs://{BUCKET_NAME}/{BUCKET_TRAIN_DATA_PATH}", nrows=1000)
     return df
 
@@ -83,19 +80,33 @@ def train_model(X_train, y_train):
     return rgs
 
 
+STORAGE_LOCATION = 'models/simpletaxifare/model.joblib'
+
+
+def upload_model_to_gcp():
+
+
+    client = storage.Client()
+
+    bucket = client.bucket(BUCKET_NAME)
+
+    blob = bucket.blob(STORAGE_LOCATION)
+
+    blob.upload_from_filename('model.joblib')
+
+
 def save_model(reg):
     """method that saves the model into a .joblib file and uploads it on Google Storage /models folder
     HINTS : use joblib library and google-cloud-storage"""
-    # saving the trained model to disk is mandatory to then be able to upload it to GCP storage
 
-    # ***Implement a local save here***
-
+    # saving the trained model to disk is mandatory to then beeing able to upload it to storage
+    # Implement here
+    joblib.dump(reg, 'model.joblib')
     print("saved model.joblib locally")
 
-    storage_location = f"models/{MODEL_NAME}/{MODEL_VERSION}/model.joblib"
-    # ***Implement a GCP upload to the storage_location here***
-
-    print(f"uploaded model.joblib to gcp cloud storage under \n => {storage_location}")
+    # Implement here
+    upload_model_to_gcp()
+    print(f"uploaded model.joblib to gcp cloud storage under \n => {STORAGE_LOCATION}")
 
 
 if __name__ == '__main__':
