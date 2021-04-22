@@ -1,5 +1,4 @@
-# pylint: disable=missing-docstring, fixme
-
+# pylint: disable=missing-docstring,line-too-long,fixme
 import sys
 import requests
 
@@ -8,8 +7,7 @@ DEGREE_SIGN = u"\N{DEGREE SIGN}"
 
 
 def search_city(query):
-    # TODO: Look for a given city and disambiguate between several candidates.
-    # Return one city (or None)
+    # TODO: Look for a given city and disambiguate between several candidates. Return one city (or None)
     url = BASE_URI + "/api/location/search/?query=" + query
     response = requests.get(url).json()
     try:
