@@ -14,7 +14,18 @@ def detailed_movies(db):
 
 def top_five_youngest_newly_directors(db):
     # return the top 5 youngest directors when they direct their first movie
-    pass
+    query="""
+        SELECT d.name, (m.start_year - d.birth_year) AS age_when_first_time_director
+        FROM directors d
+        INNER JOIN movies m
+        ON m.director_id  = d.id
+        WHERE age_when_first_time_director IS NOT NULL
+        ORDER BY age_when_first_time_director ASC 
+        LIMIT 5
+    """
+    db.execute(query)
+    results = db.fetchall()
+    return results
 
 def late_released_movies(db):
     # return the list of all movies released after their director death
