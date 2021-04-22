@@ -2,7 +2,15 @@
 
 def detailed_movies(db):
     # return the list of movies with their genres and director name
-    pass
+    query="""
+        SELECT m.title, m.genres, d.name
+        FROM movies m 
+        INNER JOIN directors d 
+        ON m.director_id  = d.id;
+    """
+    db.execute(query)
+    results = db.fetchall()
+    return results
 
 def top_five_youngest_newly_directors(db):
     # return the top 5 youngest directors when they direct their first movie
