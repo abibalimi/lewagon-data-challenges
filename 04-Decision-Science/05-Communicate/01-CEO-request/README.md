@@ -4,10 +4,9 @@ Continue working on yesterday's `ceo-request.ipynb` notebook as needed to answer
 
 > _Should Olist remove underperforming sellers from its marketplace?_
 
-🚀 Feel free to start from the solutions `seller_updated_solution.py` and `product_updated_solution.py` available to download from yesterday's recap challenge.
-They contain profits_per_seller and profits_per_products.
+🚀 Feel free to start from the solutions `seller_updated_solution.py` and `product_updated_solution.py` available to download from yesterday's recap challenge. They contain `profits_per_seller` and `profits_per_product`.
 
-### Present your analysis at 5pm!
+### Present your analysis at 5pm
 
 You have 5 minutes per person (Q&A included) to convince the Olist CEO of your recommendations.
 
@@ -15,19 +14,16 @@ You have 5 minutes per person (Q&A included) to convince the Olist CEO of your r
 - Each one of you will present your analysis in front of your group
 - The TA will play the role of the CEO.
 
-👉 You will have to make a slide-based presentation using Jupyter Notebook **nbconvert**
+### Create jupyter notebook slides !
 
-- Remember to enable slideshow view in your notebook and mark each cell appropriately
-- Then run the below, replacing `your_notebook.ipynb` with the name of your file
+You will have to make a slide-based presentation using Jupyter Notebook **nbconvert**
 
-```bash
-jupyter nbconvert --to slides --post serve your_notebook.ipynb
-```
+👉 Follow the `slide_like_a_pro.ipynb` guide to learn how to make them
 
-💫 Stop analysis by 2pm to have time to polish your presentation and speech
+🏁 Stop your analyses by 2pm to have time to polish your presentation and speech
 
 
-### Optional
+### (Optional)
 
 Feel free to extend your analysis to help improve Olist's profit margin:
 
