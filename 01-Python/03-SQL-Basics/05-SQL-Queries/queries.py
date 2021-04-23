@@ -40,10 +40,26 @@ def late_released_movies(db):
     results = db.fetchall()
     return [r[0] for r in results]
     
-
 def stats_on(db, genre_name):
     # return a dict of stats for a given genre
-    pass
+    genre_name_out = genre_name
+    print(genre_name)
+    genre_name = (genre_name,)
+    query = """
+        SELECT 
+	    COUNT(m.id) AS number_of_movies, 
+	    ROUND(AVG(m.minutes),2) AS avg_length	
+        FROM movies m
+        WHERE m.genres = ?
+    """
+    db.execute(query, genre_name)
+    results = db.fetchone() # results in a list (rows) of tuples (columns)
+    results = {
+        'genre': genre_name_out,
+        'number_of_movies': results[0],
+        'avg_length': results[1]
+    }
+    return results
 
 def top_five_directors_for(db, genre_name):
     # return the top 5 of the directors with the most movies for a given genre
