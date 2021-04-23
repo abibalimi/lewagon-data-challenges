@@ -2,11 +2,26 @@
 
 def query_orders(db):
     # return a list of orders displaying each column
-    pass
+    query = """
+        SELECT *
+        FROM Orders
+        ORDER BY OrderID ASC
+    """
+    db.execute(query)
+    results = db.fetchall() 
+    return results
 
 def get_orders_range(db, date_from, date_to):
     # return a list of orders displaying all columns with OrderDate between date_from and date_to
-    pass
+    query = """
+        SELECT *
+        FROM Orders
+        WHERE OrderDate > ? AND  OrderDate <= ?
+        ORDER BY OrderDate ASC
+    """
+    db.execute(query, (date_from, date_to))
+    results = db.fetchall() 
+    return results
 
 def get_waiting_time(db):
     # get a list with all the orders displaying each column
