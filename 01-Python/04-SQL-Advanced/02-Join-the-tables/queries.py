@@ -56,4 +56,14 @@ def orders_per_customer(db):
     '''TO DO: return a list of tuples where each tupe contains the contactName
     of the customer and the number of orders they made (contactName,
     number_of_orders). Order the list by ascending number of orders'''
-    pass
+    query="""
+        SELECT c.ContactName, COUNT(o.OrderID) as number_of_orders 
+        FROM Customers c
+        LEFT JOIN Orders o ON c.CustomerID = o.CustomerID 
+        GROUP BY c.CustomerID 
+    ORDER BY number_of_orders ASC
+    """
+    db.execute(query)
+    results = db.fetchall()
+    #results = [r[0] for r in results]
+    return results
