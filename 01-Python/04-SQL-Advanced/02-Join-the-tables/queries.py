@@ -39,7 +39,18 @@ def spent_per_customer(db):
 def best_employee(db):
     '''return the first and last name of the best employee (the one
     who sells the most in terms of amount of money'''
-    pass
+    query="""
+        SELECT e.FirstName, e.LastName,
+	    ROUND(SUM(od.Quantity * od.UnitPrice), 2) AS total_amount
+        FROM OrderDetails od, Orders o   
+        JOIN Employees e ON e.EmployeeID = o.EmployeeID AND o.OrderID = od.OrderID
+        GROUP BY e.FirstName 
+        ORDER BY total_amount DESC
+    """
+    db.execute(query)
+    results = db.fetchall()
+    #results = [r[0] for r in results]
+    return [results[0]]
 
 def orders_per_customer(db):
     '''TO DO: return a list of tuples where each tupe contains the contactName
