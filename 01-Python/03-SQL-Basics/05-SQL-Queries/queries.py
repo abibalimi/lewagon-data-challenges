@@ -42,8 +42,6 @@ def late_released_movies(db):
     
 def stats_on(db, genre_name):
     # return a dict of stats for a given genre
-    genre_name_out = genre_name
-    print(genre_name)
     genre_name = (genre_name,)
     query = """
         SELECT 
@@ -53,9 +51,9 @@ def stats_on(db, genre_name):
         WHERE m.genres = ?
     """
     db.execute(query, genre_name)
-    results = db.fetchone() # results in a list (rows) of tuples (columns)
+    results = db.fetchone()
     results = {
-        'genre': genre_name_out,
+        'genre': genre_name[0],
         'number_of_movies': results[0],
         'avg_length': results[1]
     }
