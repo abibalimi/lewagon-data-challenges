@@ -23,7 +23,18 @@ def spent_per_customer(db):
         Simon  |   432
         ...
     '''
-    pass
+    query="""
+        SELECT c.ContactName,
+	    ROUND(SUM(od.Quantity * od.UnitPrice), 2) AS total_amount
+        FROM OrderDetails od 
+        JOIN Orders o ON o.OrderID = od.OrderID 
+        JOIN Customers c ON o.CustomerID = c.CustomerID
+        GROUP BY c.ContactName 
+        ORDER BY total_amount ASC
+    """
+    db.execute(query)
+    results = db.fetchall()
+    return results
 
 def best_employee(db):
     '''return the first and last name of the best employee (the one
