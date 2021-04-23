@@ -8,7 +8,7 @@ def query_orders(db):
         ORDER BY OrderID ASC
     """
     db.execute(query)
-    results = db.fetchall() 
+    results = db.fetchall()
     return results
 
 def get_orders_range(db, date_from, date_to):
@@ -20,11 +20,18 @@ def get_orders_range(db, date_from, date_to):
         ORDER BY OrderDate ASC
     """
     db.execute(query, (date_from, date_to))
-    results = db.fetchall() 
+    results = db.fetchall()
     return results
 
 def get_waiting_time(db):
     # get a list with all the orders displaying each column
     # and calculate an extra TimeDelta column displaying the number of days
     # between OrderDate and ShippedDate, ordered by ascending TimeDelta
-    pass
+    query = """
+        SELECT * , JULIANDAY(ShippedDate) -JULIANDAY(OrderDate) AS TimeDelta
+        FROM Orders
+        ORDER BY TimeDelta ASC
+    """
+    db.execute(query)
+    results = db.fetchall()
+    return results
