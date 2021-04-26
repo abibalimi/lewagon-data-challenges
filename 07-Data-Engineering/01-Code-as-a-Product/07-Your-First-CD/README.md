@@ -87,6 +87,8 @@ Here we will get back to our precious `.github/workflows` GitHub configuration..
         heroku_email: ${{secrets.HEROKU_EMAIL}}
 ```
 
+You may verify that the syntax of the uncommented YAML remains correct using a [YAML validation tool](https://codebeautify.org/yaml-validator).
+
 Then add your email address and your Heroku API key in the Secrets of your project repository on Github (follow the steps below).
 
 This CD configuration will do nothing more than executing the commands that you manually executed in the previous section. The only difference is that these commands will be executed automatically from the **Github servers** whenever the code that you push to your GitHub repository passes all the steps defined in the CI:
