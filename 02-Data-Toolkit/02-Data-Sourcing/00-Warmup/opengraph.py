@@ -2,7 +2,6 @@
 """
 Client of the Wagon OpenGraph API
 """
-import pprint
 import requests
 
 def fetch_metadata(url):
@@ -12,10 +11,10 @@ def fetch_metadata(url):
     url = f"https://opengraph.lewagon.com/?url={url}"
     response = requests.get(url)
     if response.status_code != 200:
-        return None
+        return ""
     return response.json()['data']
 
 # To manually test, please uncomment the following lines and run `python opengraph.py`:
 #import pprint
-pp = pprint.PrettyPrinter(indent=4)
-pp.pprint(fetch_metadata("https://www.lewagon.com"))
+#pp = pprint.PrettyPrinter(indent=4)
+#pp.pprint(fetch_metadata("https://www.lewagon.com"))
