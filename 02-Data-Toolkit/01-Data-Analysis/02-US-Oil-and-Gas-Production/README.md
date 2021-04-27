@@ -194,7 +194,7 @@ Then let's have a look at the available states, looking at all the columns _exce
 filtered_yearly_gas_df.columns[1:].sort_values()
 ```
 
-:question: Can you insert a new cell and write the code to plot linecharts of the gas production of four states of your choice? You can start from the `full_yearly_gas_df` dataframe.
+:question: Can you insert a new cell and write the code to plot linecharts of the gas production of four states of your choice? You can start from the `filtered_yearly_gas_df` dataframe.
 
 <details><summary markdown='span'>View solution
 </summary>
@@ -202,7 +202,7 @@ filtered_yearly_gas_df.columns[1:].sort_values()
 If we wanted to pick Colorado, Louisiana, Ohio and Utah, this is how we could do it:
 
 ```python
-plot = full_yearly_gas_df.filter(items=['Colorado', 'Louisiana', 'Ohio', 'Utah']).plot()
+plot = filtered_yearly_gas_df.filter(items=['Colorado', 'Louisiana', 'Ohio', 'Utah']).plot()
 plot.set_xlabel("Year")
 ```
 
