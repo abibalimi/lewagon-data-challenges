@@ -19,7 +19,7 @@ There are four methods to implement:
 ### Who sells the most?
 
 Implement `best_employee method` to determine who's the best employee! By "best employee", we mean the one who sells the most. 👑<br>
-We expect the function to return a value like: `[('FirstName', 'LastName', 6000 (the sum of all purchase))]`
+We expect the function to return a value like: `('FirstName', 'LastName', 6000 (the sum of all purchase))`. The order of information is irrelevant.
 
 ### Who doesn't buy anything?
 Implement `orders_per_customer` to get the amount of Orders made by each Customer. As you can guess with the title, you should also display customers with no order?

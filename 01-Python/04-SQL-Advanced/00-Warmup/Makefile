@@ -7,5 +7,5 @@ pytest:
 	PYTHONDONTWRITEBYTECODE=1 pytest -v --color=yes
 
 seed:
-	rm db/school.sqlite
-	sqlite3 db/school.sqlite < tests/seed.sql
+	rm data/school.sqlite
+	sqlite3 data/school.sqlite < tests/seed.sql

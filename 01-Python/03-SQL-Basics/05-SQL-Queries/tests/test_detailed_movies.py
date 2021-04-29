@@ -14,7 +14,7 @@ class TestDetailedMovies(unittest.TestCase):
 
     def test_length_list(self):
         results = detailed_movies(db)
-        self.assertEqual(len(results), 9875)
+        self.assertEqual(len(results), 9872)
 
     def test_first_element(self):
         results = detailed_movies(db)

@@ -16,7 +16,7 @@ class QueriesMethods(unittest.TestCase):
     def test_directors_count(self):
         count = directors_count(db)
         self.assertIs(type(count), int)
-        self.assertEqual(count, 4092)
+        self.assertEqual(count, 4089)
 
     def test_directors_list(self):
         directors = results['directors']

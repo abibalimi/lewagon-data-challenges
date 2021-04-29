@@ -1,5 +1,5 @@
-⚠️ This is the final challenge of the week (you have until Friday evening to complete it).
-**Before diving into it, take time to finish yesterday's challenge 02 on sellers analysis**.
+⚠️ This is the final challenge of the week (you have until the end of the Communicate topic to complete it).
+**Before diving into it, take time to finish the challenge 02 on sellers analysis (Liner Regression topic)**.
 
 
 Our preliminary analysis is good enough for the limited time we have. Let's recap our key findings:
@@ -40,7 +40,7 @@ The IT department also told you that since the birth of the marketplace, cumulat
 - Refrain from re-using from previous notebooks - they were made for investigation only
 - All your re-usable logic is coded in `olist/*.py` scripts
 
-You have until Friday afternoon to produce the following analysis:
+You have until the end of the Communicate topic to produce the following analysis:
 
 > **Should Olist remove underperforming sellers from its marketplace?**
 

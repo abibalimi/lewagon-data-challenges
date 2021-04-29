@@ -4,7 +4,7 @@ Let's start the day with a **Warm-Up** challenge and a quick `SELECT` statement.
 
 ## Database Discovery
 
-Open the `db/school.sqlite` with DBeaver and have a look at the schema.
+Open the `data/school.sqlite` with DBeaver and have a look at the schema.
 
 - How many tables do you have?
 - For each table, what are the columns?
