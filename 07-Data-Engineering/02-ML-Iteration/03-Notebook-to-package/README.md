@@ -20,7 +20,7 @@ We have created for you the following structure:
 
 You are going to create a package from your pipeline. To achieve this, we provide you a minimal template generator package [`packgenlite`](https://github.com/krokrob/packgenlite).
 
-- Install `packgenlite` package from Github
+- Install the `packgenlite` package from Github
 
 ```bash
 pip install git+https://github.com/krokrob/packgenlite
@@ -35,7 +35,10 @@ packgenlite TaxiFareModel
 
 - Copy the code we provide into your project
 
-<details><summary>💡 Hint</summary>
+<details>
+  <summary markdown='span'><strong>💡 Hint</strong></summary>
+
+<br>
 
 ```bash
 cp -r ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/02-ML-Iteration/03-Notebook-to-package/*.py ~/code/<user.github_nickname>/TaxiFareModel/TaxiFareModel
@@ -73,12 +76,12 @@ cp -r ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/02-ML-It
 
 #### Download the datasets locally
 
-- Download the datasets `train.csv` and `test.csv` from [Kaggle (`Data` tab)](https://www.kaggle.com/c/new-york-city-taxi-fare-prediction/data) if you didn't do it yet
+- Download the datasets `train.csv` and `test.csv` from [Kaggle (`Data` tab)](https://www.kaggle.com/c/new-york-city-taxi-fare-prediction/data) if you have not done it yet
 - Move them under the `raw_data` folder
 - Download 2 subsets of the full `train.csv` dataset:
   - [train_1k.csv](https://wagon-public-datasets.s3.amazonaws.com/taxi-fare-ny/train_1k.csv) with 1_000 rows
   - [train_10k.csv](https://wagon-public-datasets.s3.amazonaws.com/taxi-fare-ny/train_10k.csv) with 10_000 rows
-- Move them under the `raw_data` folder
+- Move them to the `raw_data` folder
 - Make sure your package has the following architecture:
 
 ```bash
@@ -112,35 +115,35 @@ cp -r ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/02-ML-It
 
 Inspect the functions `get_data` and `clean_data` that are already given to you.
 
-_NB: Here we provide you with the same functions so that we all get and clean data the same way._
+_NB: We provide you with the same functions so that we all get and clean data the same way._
 
 #### `utils.py`
 
-In `utils.py` this is where you can have :
-- `haversine_distance` method
-- `compute_rmse` method
+`utils.py` is where you can store :
+- the `haversine_distance` method
+- the `compute_rmse` method
 
 #### `encoders.py`
 
-In `encoders.py` let's put the custom encoders and transformers you have for distance and time features
+Let's store the custom encoders and transformers you have for distance and time features in `encoders.py`.
 
 **Reminder**
 
 Let us be clear about the use of `encoders.py` here:
-- It contains all custom pipeline preprocessing blocs not provided by sklearn
-- These preprocessing blocks are the DistanceTransformer and the TimeFeaturesEncoder
+- It contains all the custom pipeline preprocessing blocks not provided by sklearn
+- These preprocessing blocks are the `DistanceTransformer` and the `TimeFeaturesEncoder`
 
 #### `trainer.py`
 
 Implement the main class here.
 
 The `Trainer` class is the main class. It should have:
-- a `__init__()` method instanciating class
-- a `set_pipeline()` method that builds the pipeline
-- a `run()` method that trains the pipeline
-- a `evaluate()` method evaluating model
+- an `__init__` method called when the class is instanciated
+- a `set_pipeline` method that builds the pipeline
+- a `run` method that trains the pipeline
+- an `evaluate` method evaluating the model
 
-Make sure you are confident with following notions:
+Make sure you are confident with the following notions:
 - attributes and methods of a class
 - `**kwargs` argument of a function and how to use it, (help [HERE](https://www.programiz.com/python-programming/args-and-kwargs) if unclear)
 
@@ -180,7 +183,8 @@ python -i TaxiFareModel/trainer.py
 ```
 
 #### Hints for debugging 🐛
-- Do not hesitate to only breakdown your code into smaller calls for debugging
+
+- Do not hesitate to breakdown your code into smaller calls for debugging
 - Use [if \_\_name__ == '\_\_main__'](https://www.geeksforgeeks.org/what-does-the-if-__name__-__main__-do/) at the end of each `.py` file to debug
 - For instance to debug data.py, add at the end:
 
@@ -191,7 +195,7 @@ if __name__ == '__main__':
     df = get_data()
 ```
 
-Then in a `ipython` session from your terminal, you can run:
+Then in an `ipython` session from your terminal, you can run:
 
 ```bash
 In [1]: %run TaxiFareModel/data.py
@@ -201,7 +205,7 @@ In [2]: df.shape
 
 ### Install your package
 
-When your package is all set, you would like to install it locally so that it can be imported anywhere. From your package folder, run:
+When your package is all set, you should install it locally so that it can be imported anywhere. From your package folder, run:
 
 ```bash
 pip install -e .

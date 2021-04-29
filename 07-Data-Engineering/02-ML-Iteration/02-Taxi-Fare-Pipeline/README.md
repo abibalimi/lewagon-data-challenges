@@ -1,10 +1,9 @@
 # Pipelines applied to our TaxiFareModel
 
-Apply Pipeline on a concrete example
+Apply pipelines on a concrete example.
 
 # Exercise
 
-Here you will create you first pipeline on a concrete real life example
+Here you will create your first pipeline on a real life example.
 
-Open `Taxifare-Pipeline.ipynb` notebook and follow steps.
-
+Open the `Taxifare-Pipeline.ipynb` notebook and follow the steps.
