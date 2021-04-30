@@ -40,5 +40,3 @@ class TestReality(unittest.TestCase):
         expected = 0.08
         random.seed(1)
         self.assertAlmostEqual(play_n_game(1000,100)[50], expected, places = 2)
-
-
