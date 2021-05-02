@@ -1,7 +1,7 @@
 # pylint: disable=missing-docstring,W0612
 
 import random
-import numpy as np
+#import numpy as np
 
 
 def play_one_game(n_toss):
@@ -20,8 +20,7 @@ def play_n_game(n_games, n_toss):
      number of heads.
     '''
     #head_counter = [play_one_game(n_toss) for game in range(n_games+1)]
-    #return dict(zip(np.arange(n_toss+1), np.bincount(head_counter, minlength=n_toss+1)/n_games)) """
-    
+    #return dict(zip(np.arange(n_toss+1), np.bincount(head_counter, minlength=n_toss+1)/n_games))
     # initialize dict with zeros
     count_dict = {k: 0 for k in range(n_toss+1)}
     for _ in range(n_games):
