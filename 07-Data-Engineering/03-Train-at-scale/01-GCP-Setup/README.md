@@ -92,11 +92,14 @@ It is the daily challenge of every data engineer: storing 🔑 to access our �
 Make sure you understand what you do there and overall why you do it:
 - Go to [Service Account key page](https://console.cloud.google.com/apis/credentials/serviceaccountkey)
 - Create a new Service Account key :
-  - Give a name to that account
-  - Set Role as `project > owner`
-
-- Download the `JSON` file, and store it somewhere you'll remember, for example `/Users/YOUR_USER_NAME/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json`
-- Avoid using spaces in the name of the file, it will be easier to use it
+  - Give a name to that account. Click on `Create`
+  - In the "Role" dropdown, select `Owner`. Click on `Continue`
+  - Click on `Done`
+  - Locate your service account and click on the 3 dots on the right and click on `Manage Keys`
+  - Click on `Create new key`
+  - Select `JSON`. Click on `Create`
+  - Download the `JSON` file, and store it somewhere you'll remember, for example `/Users/YOUR_USER_NAME/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json`
+  - Avoid using spaces in the name of the file, it will be easier to use it
 
 ⚠️ **MOST IMPORTANT STEP** ⚠️
 
