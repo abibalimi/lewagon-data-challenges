@@ -266,8 +266,8 @@ books_dict
 ```
 
 ```python
-len(books_dict)         # You should have 3 dictionaries
-len(books_dict["Title"]) # Each containing 20 elements from the 20 books, as many as on the web page!
+len(books_dict)         # You should have 3 key:value pairs
+len(books_dict["Title"]) # Each value should contain 20 elements from the 20 books, as many as on the web page!
 ```
 
 ## Loading data in Pandas
