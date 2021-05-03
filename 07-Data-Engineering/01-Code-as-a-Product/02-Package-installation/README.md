@@ -27,17 +27,17 @@ To install the package, as seen in lecture, simply run:
 pip install -e .
 ```
 
-💡 __Remember that the `-e` flag tells `pip` to create a symbolic link between the installation directory in the virtual env and the actual code of the package. Therefore the latest version of the code of your package will always be the one loaded on your machine.__
+💡 Remember that the `-e` flag tells `pip` to create a symbolic link between the installation directory in the virtual env and the actual code of the package. Therefore the latest version of the code of your package will always be the one loaded on your machine.
 
-💡 __Off course whenever you load your package in ipython or a notebook, do not forget to `%load_ext autoreload` and `%autoreload 2` as well. This way the python interpreter will not cache the code or your package and the latest version of the code will be loaded whenever import is ran.__
+💡 Whenever you load your package in __ipython or a notebook__ do not forget to `%load_ext autoreload` and `%autoreload 2` as well. This way the python interpreter will not cache the code or your package and the latest version of the code will be loaded whenever an import is ran.
 
-💡 __Thanks to the `setup.py` file, `pip` knows to install the dependencies of the package listed in the `requirements.txt` file__
+💡 Thanks to the `setup.py` file, `pip` knows to install the dependencies of the package listed in the `requirements.txt` file.
 
-💡 __Once `mlproject` is installed using the `-e` flag on your machine, you do not need to reinstall it in order for the changes in the code to be effective. The only case where you need to reinstall `mlproject` is if you create new scripts. Whenever you create a new script, it needs to be linked to by the virtual env. In this case, you need to `pip install -e .` again.__
+💡 Once `mlproject` is installed using the `-e` flag on your machine, you __do not need to reinstall it__ in order for the changes in the code to be effective. The only case where you need to reinstall `mlproject` is if you __create new scripts__. Whenever you create a new script it needs to be linked to the virtual env. In this case, you need to `pip install -e .` again.
 
 ## Project as a package
 
-Your mlproject is now a package, just like `pandas` or `sklearn`.
+Your `mlproject` is now a package, just like `pandas` or `sklearn`.
 
 Go anywhere you want in your machine and run inside either an `ipython` or a `python` interpreter, or use a notebook, and run:
 
@@ -45,16 +45,16 @@ Go anywhere you want in your machine and run inside either an `ipython` or a `py
 import mlproject
 ```
 
-Granted, for the moment the package does not contain much... But the import works.
+For the moment the package does not contain much... But the import works.
 
 ## Project as scripts
 
-You also have installed a script, test it in your terminal:
+You also have installed a script, let's test it directly in your terminal:
 ```bash
 mlproject-run
 ```
 
-Granted, for the moment the script does not do much... But it runs.
+For the moment the script does not do much... But it runs.
 
 ## Add a first module inside of the package
 
@@ -80,7 +80,7 @@ def haversine(lon1, lat1, lon2, lat2):
     return c * r
 ```
 
-To check if your function works, a good practice is to add `if __name__ == "__main__"` at the end of `distance.py` and to compute a distance:
+To check if your function works, a good practice is to add `if __name__ == "__main__"` at the end of `distance.py` and to compute a distance by calling the function:
 
 ```python
 if __name__ == "__main__":
@@ -94,13 +94,13 @@ if __name__ == "__main__":
 
 🤔 [Here's a link](https://www.geeksforgeeks.org/what-does-the-if-__name__-__main__-do/) to understand what the condition above does if it is not clear...
 
-Then run :
+Then run in your Terminal:
 
 ```bash
 python -i mlproject/distance.py
 ```
 
-If you see `>>>` in your terminal after running this commmand, it is completely normal. the `-i` stands for interactive mode. This means that you can explore the variables you created in your python script. To exit the interactive mode either type `exit()` or `CTRL-D`.
+If you see `>>>` in your terminal after running this commmand, it is completely normal. The `-i` stands for interactive mode. This means that you can explore the variables you created in your python script. To exit the interactive mode either type `exit()` or `CTRL-D`.
 
 👉 Also, there seems to be an error when you run the code... Fix it before continuing 🙏
 
@@ -137,7 +137,7 @@ from mlproject.distance import haversine
 
 ## Fill the script of the package
 
-The objective here is to implement a new script under `scripts/` called mlproject-computedist taking 4 parameters (long1, lat1, long2, lat2) and returning the corresponding haversine distance.
+The objective here is to implement a new script under `scripts/` called `mlproject-computedist` taking 4 parameters (long1, lat1, long2, lat2) and returning the corresponding haversine distance.
 
 Install `termcolor` to allow your script to output colored text:
 
@@ -160,9 +160,11 @@ python ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/01-Code
 Basically you will want to run the exact same command but without `python` and anywhere on your laptop.
 
 In order to do that, simply:
+
 1. Create a `scripts/mlproject-computedist` file with the exact same code as `computedist.py`
-👉 __the name of a script file does not end by `.py`__
+👉 __the name of a script file does not end with `.py`__
 👉 Add the following lines at the beginning of the file. The first line specifies that the file is a python script. The second line specifies that the file is encoded using UTF-8 characters.
+
 ``` python
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
@@ -188,6 +190,7 @@ Your new tree should look like:
 └── tests
     └── __init__.py
 ```
+
 2. Modify `setup.py` in order to add `mlproject-computedist` to the list of scripts
 
 Update your `setup.py` so that the script gets installed along with the package:
@@ -211,6 +214,7 @@ setup(name='mlproject',
       scripts=['scripts/mlproject-run', 'scripts/mlproject-computedist'],
       zip_safe=False)
 ```
+
 3. Reinstall the package so that `setup.py` notices the newly created script
 
 ```python

@@ -12,7 +12,7 @@ You were able to install it in your virtual environment by running:
 pip install git+https://github.com/krokrob/packgenlite
 ```
 
-Well, the parameter provided to `pip` is just the decorated URL address of the [packgenlite GitHub repo](https://github.com/krokrob/packgenlite). Follow the link and inspect its code... Very similar to the one of our package 👌
+Well, the parameter provided to `pip` is just the decorated URL address of the [packgenlite GitHub repo](https://github.com/krokrob/packgenlite). Follow the link and inspect its code... Very similar to the one of our packages 👌
 
 Once `packgenlite` is installed, as with any package, you are able to import its modules in any python file or through ipython or a notebook:
 
@@ -22,7 +22,7 @@ from packgenlite.lib import get_data
 get_data()
 ```
 
-You are also able to play with its scripts... We will do the same thing with our package so that it allows you to share your code with other developers.
+You are also able to play with its scripts. We will do the same thing with our package so that it allows you to share your code with other developers.
 
 
 🤔 So why can't your classmates install your package by using:
@@ -79,16 +79,21 @@ Then add some content:
 ## Now lets publish your code:
 
 ### Option 1 - using GH CLI (the hacker way)
+
 Let's make sure our new package doesn't have any remote connections already:
+
 ```bash
 git remote -v
 ```
-nothing should return in the terminal.  If it does you may have created your new package inside an existing git hub repository!
+
+Nothing should be returned in the terminal. If it does you may have created your new package inside an existing git hub repository! (...like `data-challenges`.)
 
 Now it's time to use some terminal magic to create a new **public** repository on github linked to our local repository, run:
+
 ```bash
 gh repo create
 ```
+
 - enter a repository name (this should mirror your package name)
 - enter a brief description of your package
 - select public as the type
@@ -96,16 +101,19 @@ gh repo create
 
 
 Let's check our remote connections again, this time we should see an _origin_ connection:
+
 ```bash
 git remote -v
 ```
 
 You can also view the repository directly on github with:
+
 ```bash
 gh repo view --web
 ```
 
 🤔 Doesn't look like any of our code is there yet?  We still need to push our work from the local repository on our machine up to github!
+
 ```bash
 git add .
 git commit -m "Initial Push"
@@ -114,6 +122,7 @@ git push -u origin master
 
 
 ### Option 2 - manually create and link
+
 - Create a [new public repository](https://github.com/new) on GitHub named after the name of your package
 👉 The repository needs to be public, otherwise you will not be able to share your package easily with anyone...
 - Follow the instructions in the `... or push an existing repository from the command line` section:
@@ -147,6 +156,7 @@ If you wish to do that:
 - Create a `requirements.txt` file at the root of your project
 - List the decorated URLs of the packages of your classmates in the file
 - Learn more about [requirements files](https://pip.pypa.io/en/stable/user_guide/#requirements-files) and find out how to install all of the packages specified in the file in your virtual environment with a single command
+-
 <details>
   <summary>Hint</summary>
 

@@ -3,7 +3,7 @@
 
 Let's create your own toolbox package where you will store all the bits of code that you may want to reuse in the future.
 
-Every time you implement a cool function, you will add it to a file inside of your package, and add a test function that will test it.
+Every time you implement a cool function you will add it to a file inside of your package and add a test function that will check if it works correctly.
 
 ## First steps
 

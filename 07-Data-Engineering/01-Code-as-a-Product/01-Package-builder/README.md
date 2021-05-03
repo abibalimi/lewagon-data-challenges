@@ -1,6 +1,8 @@
 ## Install Package builder with pip
 
-Before doing anything here, please make sure _**you are inside of a python3 virtual environment**_
+Before doing anything here, please make sure _**you are inside of the `lewagon` virtual environment**_.
+
+Now you can install the `packgenlite` tool:
 
 ```bash
 pip install git+https://github.com/krokrob/packgenlite
@@ -28,13 +30,13 @@ Go to `/tmp` to test the script, and build your first package:
 cd /tmp && packgenlite first_project
 ```
 
-Get inside you newly created paskage
+Get inside you newly created package:
 
 ```bash
 cd first_project
 ```
 
-Here is the structure of the project that was generated.
+Below you can see the structure of the project that was generated.
 Check how your package is structured by running `tree` in the terminal:
 
 ```bash
@@ -54,3 +56,5 @@ Check how your package is structured by running `tree` in the terminal:
 └── tests
     └── __init__.py
 ```
+
+In case `tree` is not installed you can run `brew install tree` for macOs and `sudo apt-get install tree` for Linux to install it on your machine.
