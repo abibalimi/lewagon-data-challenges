@@ -30,6 +30,19 @@ class Olist:
         01-01 > This function returns a matching table between
         columns [ "order_id", "review_id", "customer_id", "product_id", "seller_id"]
         """
+        data = self.get_data()
+
+        # Select only the columns of interest
+        orders = data["orders"][["customer_id", "order_id"]]
+        reviews = data["order_reviews"][["order_id", "review_id"]]
+        items = data["order_items"][["order_id", "product_id", "seller_id"]]
+
+        # Merge DataFrame
+        matching_table = orders\
+        .merge(reviews, on="order_id", how="outer")\
+        .merge(items, on="order_id", how="outer")
+
+        return matching_table
 
     def ping(self):
         """
