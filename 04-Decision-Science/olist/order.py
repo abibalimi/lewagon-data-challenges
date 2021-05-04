@@ -57,6 +57,7 @@ class Order:
         result_df['order_id'] = reviews['order_id']
         result_df['dim_is_five_star'] = reviews["review_score"].map(dim_five_star) # --> Series([0, 1, 1, 0, 0, 1 ...])
         result_df["dim_is_one_star"] = reviews["review_score"].map(dim_one_star) # --> Series([0, 1, 1, 0, 0, 1 ...])
+        result_df['review_score'] = reviews['review_score']
         
         return result_df
     
@@ -104,3 +105,13 @@ class Order:
         number_of_sellers, freight_value, distance_customer_seller]
         """
         # Hint: make sure to re-use your instance methods defined above
+        
+        result = self.get_wait_time()\
+            .merge(self.get_review_score(), on='order_id')\
+                .merge(self.get_number_products(), on='order_id')\
+                    .merge(self.get_number_sellers(), on='order_id')\
+                        .merge(self.get_price_and_freight(), on='order_id')
+        
+        return result.dropna()
+                
+        
