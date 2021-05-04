@@ -22,13 +22,45 @@ class Order:
         and filtering out non-delivered orders unless specified
         """
         # Hint: Within this instance method, you have access to the instance of the class Order in the variable self, as well as all its attributes
-
+        #self.data = self.data[self.data['order_status'] == 'delivered']
+        orders = self.data['orders'].copy()
+        orders['order_purchase_timestamp'] = pd.to_datetime(orders['order_purchase_timestamp'])
+        orders['order_approved_at'] = pd.to_datetime(orders['order_approved_at'])
+        orders['order_delivered_carrier_date'] = pd.to_datetime(orders['order_delivered_carrier_date'])
+        orders['order_delivered_customer_date'] = pd.to_datetime(orders['order_delivered_customer_date'])
+        orders['order_estimated_delivery_date'] = pd.to_datetime(orders['order_estimated_delivery_date'])
+        
+        result_df = pd.DataFrame()
+        
+        result_df['order_id'] = orders['order_id']
+        result_df['wait_time'] = (orders['order_delivered_customer_date'] - orders['order_purchase_timestamp']).dt.days
+        result_df['expected_wait_time'] = (orders['order_estimated_delivery_date'] - orders['order_purchase_timestamp']).dt.days
+        result_df['delay_vs_expected'] = (result_df['wait_time'] - result_df['expected_wait_time'])\
+            .apply(lambda x: np.abs(x) if x > 0 else 0)
+        result_df['order_status'] = orders['order_status']
+        return result_df.query("order_status == 'delivered'")
+    
     def get_review_score(self):
         """
         02-01 > Returns a DataFrame with:
         order_id, dim_is_five_star, dim_is_one_star, review_score
         """
+        reviews = self.data['order_reviews'].copy()
 
+        def dim_five_star(x):
+            return 1 if x == 5 else 0
+
+        def dim_one_star(x):
+            return 1 if x == 1 else 0
+        
+        result_df = pd.DataFrame()
+        result_df['order_id'] = reviews['order_id']
+        result_df['dim_is_five_star'] = reviews["review_score"].map(dim_five_star) # --> Series([0, 1, 1, 0, 0, 1 ...])
+        result_df["dim_is_one_star"] = reviews["review_score"].map(dim_one_star) # --> Series([0, 1, 1, 0, 0, 1 ...])
+        
+        return result_df
+    
+    
     def get_number_products(self):
         """
         02-01 > Returns a DataFrame with:
