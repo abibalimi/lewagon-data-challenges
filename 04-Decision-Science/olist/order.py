@@ -47,11 +47,11 @@ class Order:
         """
         reviews = self.data['order_reviews'].copy()
 
-        def dim_five_star(x):
-            return 1 if x == 5 else 0
+        def dim_five_star(item):
+            return 1 if item == 5 else 0
 
-        def dim_one_star(x):
-            return 1 if x == 1 else 0
+        def dim_one_star(item):
+            return 1 if item == 1 else 0
         
         result_df = pd.DataFrame()
         result_df['order_id'] = reviews['order_id']
@@ -67,7 +67,8 @@ class Order:
         order_id, number_of_products
         """
         items = self.data['order_items'].copy()
-        return items[["order_id","product_id"]].groupby("order_id").count()
+        return items[["order_id","product_id"]].groupby("order_id").count()\
+            .rename(columns={'product_id':'number_of_products'})
         
         
     def get_number_sellers(self):
@@ -75,12 +76,16 @@ class Order:
         02-01 > Returns a DataFrame with:
         order_id, number_of_sellers
         """
-
+        items = self.data['order_items'].copy()
+        return items[['order_id','seller_id']].groupby('order_id').count()\
+            .rename(columns={'seller_id':'number_of_sellers'})
     def get_price_and_freight(self):
         """
         02-01 > Returns a DataFrame with:
         order_id, price, freight_value
         """
+        items = self.data['order_items'].copy()
+        return items[['order_id','price','freight_value']].groupby('order_id').sum()
 
     def get_distance_seller_customer(self):
         """
