@@ -1,3 +1,3 @@
 ```bash
-jupyter notebook boston_housing.ipynb
+jupyter recap.ipynb
 ```

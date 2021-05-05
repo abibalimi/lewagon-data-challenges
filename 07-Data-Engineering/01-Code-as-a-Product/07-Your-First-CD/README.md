@@ -16,9 +16,28 @@ Where to deploy? You have many different options, we chose Heroku for many reaso
 ## Heroku setup
 
 - Sign in to [Heroku](https://signup.heroku.com/)
-- Install the [Heroku CLI (Command Line Interface)](https://devcenter.heroku.com/articles/heroku-cli)
+- Install the Heroku CLI (Command Line Interface):
+    <details>
+      <summary markdown='span'><strong>macOS</strong></summary>
+
+      brew tap heroku/brew && brew install heroku
+
+    </details>
+    <details>
+      <summary markdown='span'><strong>Ubuntu</strong></summary>
+
+      curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+
+    </details>
+    <details>
+      <summary markdown='span'><strong>WSL2</strong></summary>
+
+      curl https://cli-assets.heroku.com/install.sh | sh
+
+    </details>
+
 - Login the CLI
--
+
 ```bash
 heroku login
 ```

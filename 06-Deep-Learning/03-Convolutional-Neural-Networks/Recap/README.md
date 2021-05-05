@@ -1,3 +1,3 @@
 ```bash
-jupyter notebook mnist_reloaded.ipynb
+Let's correct together challenges 3, 4 and 5
 ```

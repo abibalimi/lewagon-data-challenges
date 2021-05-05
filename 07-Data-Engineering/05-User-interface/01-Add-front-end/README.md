@@ -78,7 +78,16 @@ Let's:
 python -m http.server
 ```
 
+⚠ If you can see the error related to CORS, you may want to try several things:
+- is your API endpoint __defined correctly__? You can use the Le Wagon one (look at the bottom of the challenge description)
+- is the endpoint starting with __https__ - secure protocol?
+- go to Inspect element :point_right:  Network :point_right: click on __disable cache__ (will look differently on different browsers, but you should see a checkbox just below the tabs) - you will not store any memory from previous loads of the page within your browser
+- try it out in the __incognito window__ - if it works, it means the request is affected by your browser settings or extensions, don't worry about it for now
+
 👉 Deploy our Front-End on **Github Pages**.
+
+⚠ Getting a 404 error on GH pages? Let it take 5 minutes, sometimes it needs time to find the `index.html` and display it as main root file.
+To see it quicker, try `http://yourgithuburl.com/yourapp/index.html` :ok_hand:
 
 *Hint*: alternatively, you may use this Le Wagon **Prediction API** if you you do not have one in production:
 
