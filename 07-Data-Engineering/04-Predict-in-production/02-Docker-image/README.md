@@ -112,7 +112,7 @@ Make sure that the `Docker.app` is running (you should see a whale in your menu 
 
 <img src="https://raw.githubusercontent.com/lewagon/data-challenges/master/07-Data-Engineering/04-Predict-in-production/02-Docker-image/docker_daemon.png?token=ACMEB73MAOA6APS2SDPVOXTAJIZXQ" width="150" alt="finding your PROJECT_ID in GCP">
 
-### Linux/WSL2
+### Linux
 
 Start the Docker service:
 
@@ -120,9 +120,14 @@ Start the Docker service:
 sudo service docker start
 ```
 
-### Windows
+### WSL2
 
 Make sure the Docker application is running (you should see a whale in your menu bar).
+If you prefer a "command line" way :point_right: you can also use the below command to start the Docker service:
+
+```bash
+sudo service docker start
+```
 
 ## Make sure the Docker image works on our machine
 

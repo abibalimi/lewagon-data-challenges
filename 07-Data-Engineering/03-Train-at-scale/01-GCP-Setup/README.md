@@ -91,7 +91,7 @@ Since the [service account](https://cloud.google.com/iam/docs/service-accounts) 
 It is the daily challenge of every data engineer: storing 🔑 to access our 🌩️ products.
 Make sure you understand what you do there and overall why you do it:
 - Go to [Service Account key page](https://console.cloud.google.com/apis/credentials/serviceaccountkey)
-- Create a new Service Account key :
+- Click on `+ Create Service Account`:
   - Give a name to that account. Click on `Create`
   - In the "Role" dropdown, select `Owner`. Click on `Continue`
   - Click on `Done`
@@ -172,7 +172,7 @@ For now, lets play with the `Storage` `buckets` in order to make sure that every
 
 You will need a bucket to store data, code and trained models.
 
-⚠️ **IMPORTANT**: Bucket names must be **globally unique**, please respect convention `wagon-ml-[YOUR_LAST_NAME]-XX`
+⚠️ **IMPORTANT**: Bucket names must be **globally unique**, please respect convention `wagon-ml-[YOUR_LAST_NAME]-[BATCH_NUMBER]`
 
 As the `PROJECT_ID` is used in your code in order to identify your project, the `BUCKET_NAME` will be used in your code to identify this online container where you will store your data and your models.
 
@@ -184,16 +184,17 @@ There are 2 ways to create a bucket:
 
 ### The hacker's way (**recommended**)
 
-- Open `Makefile` and copy the following lines
+- Open `Makefile` in your `TaxiFareModel` project and copy the following lines.
 
 ```make
-# project id
-PROJECT_ID=XXX  # Replace with your Project's ID
+# project id - replace with your Project's ID
+PROJECT_ID=XXX
 
-# bucket name
-BUCKET_NAME=XXX # Use your Project's name as it should be unique
+# bucket name - follow the convention of wagon-ml-[YOUR_LAST_NAME]-[BATCH_NUMBER]
+BUCKET_NAME=XXX
 
-REGION=europe-west1 # Choose your region https://cloud.google.com/storage/docs/locations#available_locations
+# Choose your region https://cloud.google.com/storage/docs/locations#available_locations
+REGION=europe-west1
 
 set_project:
     @gcloud config set project ${PROJECT_ID}
@@ -201,6 +202,8 @@ set_project:
 create_bucket:
     @gsutil mb -l ${REGION} -p ${PROJECT_ID} gs://${BUCKET_NAME}
 ```
+
+We need to fix the indentations as you copied the code with __spaces__ and we need to replace them with __tabs__. If you don't do it you'll probably see an error about `missing separator` while running the commands. If you can't figure it out yourself, make a ticket.
 
 - Use the predefined bash commands from `Makefile` to create your bucket
 
@@ -220,7 +223,7 @@ make create_bucket
 
 ## Upload your dataset
 
-- Add the following lines to your `Makefile`
+- Add the following lines to your `Makefile` (don't forget about the indentation!)
 
 ```make
 # path of the file to upload to gcp (the path of the file should be absolute or should match the directory where the make command is run)
