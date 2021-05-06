@@ -2,7 +2,6 @@
 
 import os
 
-
 def start():
     """returns the right message"""
     if 'FLASK_ENV' not in os.environ:

@@ -1,5 +1,6 @@
 # pylint: disable=missing-docstring
 
+
 def sudoku_validator(grid):
     ok_line = True
     ok_col = True

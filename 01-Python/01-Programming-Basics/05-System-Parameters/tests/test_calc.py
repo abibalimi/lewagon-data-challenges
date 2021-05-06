@@ -4,7 +4,6 @@ import unittest
 import sys
 from calc import main
 
-
 class TestCalc(unittest.TestCase):
     def test_4_plus_5(self):
         sys.argv = ["", "4", "+", "5"]
