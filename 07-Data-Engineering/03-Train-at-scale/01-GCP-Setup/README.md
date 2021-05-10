@@ -48,9 +48,6 @@ sudo apt-get install google-cloud-sdk-app-engine-python
 ```
 👉 [Install documentation](https://cloud.google.com/sdk/docs/install#deb)
 
-### Windows
-[Install and initialize the Cloud SDK](https://cloud.google.com/sdk/docs/install#windows)
-
 
 ## Configure Cloud sdk
 - Authenticate the gcloud tool with the google account you used for GCP. This will open a browser tab for authentication to your google account
@@ -98,7 +95,9 @@ Make sure you understand what you do there and overall why you do it:
   - Locate your service account and click on the 3 dots on the right and click on `Manage Keys`
   - Click on `Create new key`
   - Select `JSON`. Click on `Create`
-  - Download the `JSON` file, and store it somewhere you'll remember, for example `/Users/YOUR_USER_NAME/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json`
+  - Download the `JSON` file, and store it somewhere you'll remember, for example:
+    - macOS :point_right: `/Users/YOUR_USER_NAME/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json`
+    - Ubuntu / WSL2 :point_right: `/home/YOUR_USER_NAME/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json`
   - Avoid using spaces in the name of the file, it will be easier to use it
 
 ⚠️ **MOST IMPORTANT STEP** ⚠️
@@ -106,13 +105,16 @@ Make sure you understand what you do there and overall why you do it:
 You will define a new env variable called `GOOGLE_APPLICATION_CREDENTIALS`, referring to the path where you stored your secret key.
 Every time you'll want to interact with GCP products, either via cli interface or with any python official gcp package, you program will look for the `GOOGLE_APPLICATION_CREDENTIALS` env variable to find the secret key path on your computer.
 Last thing, make sure that the path you indicate is the **absolute path**, ie `/Users/YOUR_USER_NAME/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json` and not `~/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json`
-- Add the following line:
-  - to your `~/.aliases` for macOSX/linux/WSL2
-  - to your `.bash_profile` for Windows
+- Add the following line to your `~/.aliases`:
+  - for macOSX
+  ```
+  export GOOGLE_APPLICATION_CREDENTIALS=/Users/YOUR_USER_NAME/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json
+  ```
+  - for Ubuntu / WSL2
 
-```
-export GOOGLE_APPLICATION_CREDENTIALS=/Users/YOUR_USER_NAME/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json
-```
+  ```
+  export GOOGLE_APPLICATION_CREDENTIALS=/home/YOUR_USER_NAME/Documents/gcp_keys/YOUR_FILENAME_FOR_SECRET_KEY.json
+  ```
 
 - **Restart** your terminal and run:
 ```bash
@@ -178,7 +180,32 @@ As the `PROJECT_ID` is used in your code in order to identify your project, the 
 
 You can list the buckets of your project in [Navigation menu / Storage / Browser](https://console.cloud.google.com/storage/browser).
 
-💡 You should use the `train_1k.csv` training file in order to allow you to test the upload and the model training quickly. But eventually you are going to want to upload the full dataset in order to create a better model.
+💡 Use the `train_1k.csv` training file in order to test the upload and the model training quickly. Eventually you are going to want to upload the full dataset in order to create a better model.
+
+First, we will download the `train_1k.csv` file:
+
+``` bash
+curl --silent 'https://wagon-public-datasets.s3.amazonaws.com/taxi-fare-ny/train_1k.csv' > ~/code/<user.github_nickname>/TaxiFareModel/raw_data/train_1k.csv
+```
+
+You will need to reference the location of the file in your code.
+
+<details>
+<summary>
+  💡 Hint: how to find the local path to <code>train_1k.csv</code>?
+</summary>
+
+
+  From your terminal, go to the TaxiFareModel project that you created yesterday:
+
+  ``` bash
+  cd ~/code/<user.github_nickname>/TaxiFareModel
+  ```
+
+  From there, go to the <code>raw_data</code> directory. You should see the [train_1k.csv](https://wagon-public-datasets.s3.amazonaws.com/taxi-fare-ny/train_1k.csv) file inside.
+
+  In order to reference it, print the local path with <code>pwd</code>.
+</details>
 
 There are 2 ways to create a bucket:
 
@@ -240,24 +267,6 @@ upload_data:
     # @gsutil cp train_1k.csv gs://wagon-ml-my-bucket-name/data/train_1k.csv
     @gsutil cp ${LOCAL_PATH} gs://${BUCKET_NAME}/${BUCKET_FOLDER}/${BUCKET_FILE_NAME}
 ```
-
-<details>
-<summary>
-  💡 Hint: how to find your local path to <code>train_1k.csv</code>?
-</summary>
-
-
-  From your terminal, go to the TaxiFareModel project that you created yesterday:
-
-  ``` bash
-  cd ~/code/<user.github_nickname>/TaxiFareModel
-  ```
-
-  From there, go to the <code>raw_data</code> directory. You should see the [train_1k.csv](https://wagon-public-datasets.s3.amazonaws.com/taxi-fare-ny/train_1k.csv) file inside.
-
-  In order to reference it, print the local path with <code>pwd</code>.
-</details>
-
 
 - Finally use the predefined bash command from `Makefile` to upload your file to
 

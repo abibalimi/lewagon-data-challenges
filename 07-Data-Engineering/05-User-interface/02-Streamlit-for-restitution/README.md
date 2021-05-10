@@ -165,9 +165,18 @@ Are we not missing something ?
 
 🤔 How are the packages that `app.py` is using going to be installed on **Heroku** ?
 
-We need to add a `setup.py`, a `MANIFEST.in`, and a `requirements.txt` containing the name of the required packages to our project!
+We need to add a `setup.py`, a `MANIFEST.in`, and a `requirements.txt` containing the name of the required packages to our project! We also need a `Procfile` and a `setup.sh` in order for Heroku to know how to run our website. As well as a `Makefile` to ease the use of the command line.
 
-Let's fill their content...
+Let's copy the files provided in the challenge to your web project...
+
+<details>
+<summary> 💡 Hint: how to copy `setup.py` and other provided files to the web project ? </summary>
+
+``` bash
+cp ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/05-User-interface/02-Streamlit-for-restitution/* ~/code/<user.github_nickname>/TaxiFareWebsite
+```
+
+</details>
 
 The project should now look like this:
 
