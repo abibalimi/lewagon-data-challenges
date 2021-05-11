@@ -1,11 +1,10 @@
 
 In the previous challenges, we created a project containing the code allowing us to:
-- **Train our model** at scale
-- Deploy our **Prediction API** on **Google Cloud Run**
+- **Train a model** at scale from the Kaggle New York City Taxi Fare Prediction dataset
+- Build a containerized **Prediction API** allowing to make predictions based on this model
+- Deploy this API on **Google Cloud Run** to make it available to the world 🌍
 
-We now have a live API allowing developers all over the world 🌍 to predict the fare amount for a taxi ride in New-York 🎉
-
-👉 Optionally, we may start from the correction of the `07-Data-Engineering/04-Predict-in-production/03-GCR-cloud-run` exercise 👌
+We have a live API allowing developers all over the world to predict the fare amount for a taxi ride in New York City 🎉
 
 Now, we want to allow users all over the internet to be able to use our model in order to make a fare amount prediction, not just developers.
 
@@ -15,11 +14,14 @@ Let's add a **Front-End** (website) on top of our **API** in order to visualize 
 
 # First, let's create a new project
 
-For now, all the code that we have been using for data exploration (notebooks), model training and building our prediction API in contained in a single project.
+For now, all the code that we have been using for data exploration (notebooks), model training and building our prediction API is contained in a single project.
 
-We are going to create a new project for our website.
+We are going to create a separate project for our website in order to keep things organised.
 
-🤔 Why would we want to split our code into 2 projects ? Separating the model training + prediction API from the website will allow the package for the website to be very light.
+🤔 Why would we want to split our code into 2 projects ?
+
+👉 Separating the code for the model training + prediction API from the code of the website will allow the package for the website to be very light.
+👉 Using separate projects will also ease the deployment of the interface
 
 Actually, the package for our website will not require to contain any Data Science related code, since the website will be using our own API in order to make predictions.
 
@@ -32,9 +34,9 @@ In this exercise, we are going to clone a repository containing an existing Taxi
 
 This will give us an overview of what can be done in order to expose an API.
 
-We will create a new project directory for the code of our website. This directory will be located inside of our local GitHub directory where we store all of our GitHub repositories: `~/code/<user.github_nickname>`.
+We will create a new project directory for the code of our website. This directory will be located inside of our *project**s** directory* where we store all of our GitHub repositories: `~/code/<user.github_nickname>`.
 
-In the next exercise, we will code our own website from scratch with Streamlit 🎉 And this second website will also have a project of its own...
+Then in the next challenge, we will code our own website from scratch with Streamlit 🎉 And this second website will also have a project of its own...
 
 # Let's go!
 
@@ -78,7 +80,7 @@ Let's:
 python -m http.server
 ```
 
-⚠ If you can see the error related to CORS, you may want to try several things:
+⚠ If you can see an error related to CORS, you may want to verify several things:
 - is your API endpoint __defined correctly__? You can use the Le Wagon one (look at the bottom of the challenge description)
 - is the endpoint starting with __https__ - secure protocol?
 - go to Inspect element :point_right:  Network :point_right: click on __disable cache__ (will look differently on different browsers, but you should see a checkbox just below the tabs) - you will not store any memory from previous loads of the page within your browser
