@@ -1,6 +1,6 @@
 # Bonus
 
-Have fun with the dataset! 
+Have fun with the dataset!
 
 Investigate the features and add them to your modelling to improve the performance! Don't forget to diagnose the model for bias and variance along the way.
 

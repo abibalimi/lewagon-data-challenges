@@ -9,8 +9,8 @@ This exercise will make you better understand the embeddings in general.
 
 ## Requirement
 
-Install the [GENSIM](https://radimrehurek.com/gensim/) library:
+Install the [GENSIM](https://radimrehurek.com/gensim/) and the [python-Levenshtein](https://github.com/ztane/python-Levenshtein) libraries:
 
 ```bash
-pip install gensim
+pip install gensim python-Levenshtein
 ```

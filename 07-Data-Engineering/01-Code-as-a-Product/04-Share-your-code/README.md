@@ -156,16 +156,14 @@ If you wish to do that:
 - Create a `requirements.txt` file at the root of your project
 - List the decorated URLs of the packages of your classmates in the file
 - Learn more about [requirements files](https://pip.pypa.io/en/stable/user_guide/#requirements-files) and find out how to install all of the packages specified in the file in your virtual environment with a single command
--
+
 <details>
-  <summary>Hint</summary>
-
-  &nbsp;
-
+  <summary markdown='span'><strong> 💡 Hint </strong></summary>
 
 ``` bash
 pip install -r requirements.txt
 ```
+
 </details>
 
 Now that all their packages are installed in your virtual environment, write some code in order to call functions or classes from their packages.

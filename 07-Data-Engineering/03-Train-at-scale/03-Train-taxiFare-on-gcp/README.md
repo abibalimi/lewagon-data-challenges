@@ -1,60 +1,72 @@
 # Objective
 
-In the previous exercise, we trained a basic model on GCP. We will now integrate a complete pipeline and use the trained model to make a prediction.
+In the previous challenge, we trained a basic model on GCP. We will now integrate a complete pipeline and use the trained model to make a prediction.
 
 Deploy, train and use your pipeline model with GCP.
-You've trained and evaluated your first Pipeline on your laptop, now you'll do everything on GCP.
+
+You've trained and evaluated your first Pipeline on your laptop, now you'll do everything on GCP - in the cloud.
 
 ## Complete `TaxiFareModel/trainer.py` to be trainable and deployable to GCP
 
 Here we go back with the pipeline including:
 - Custom encoders
-- Mlfow tracking on remote server
+- Mlfow tracking on a remote server
 
-You can start from the `TaxiFareModel` package solution of `07-Data-Engineering/02-ML-Iteration/04-MLFlow-quickstart`, but feel free to use your own package as well.
+Start from the `TaxiFareModel` package solution of `07-Data-Engineering/02-ML-Iteration/04-MLFlow-quickstart`, but feel free to use your own package as well.
+
+Move the solution to the *projects directory*: `~/code/<user.github_nickname>`.
+
+<details>
+  <summary markdown='span'><strong> How to move it to the *projects directory* ? </strong></summary>
+
+
+  ``` bash
+  mv downloaded_solution_package ~/code/<user.github_nickname>/TFM_TrainAtScalePipeline
+  cd ~/code/<user.github_nickname>/TFM_TrainAtScalePipeline
+  ```
+</details>
+
 
 Modify the `get_data()` function and add a `save_model()` method inside `trainer.py` in order to:
-👉 Get training data from Storage (still working on 1k sample for faster runs here)
-👉 Upload model to Storage just like in the last exercise
+- Get the training data from `Cloud Storage` (still working on 1k data sample for faster runs here)
+- Upload your model to `Cloud Storage` just like in the last challenge
 
-💡 For a better organization of your code you can create a new file `params.py` and move there all your variables (`BUCKET_NAME` etc...) which later on you will import in `data.py`, `trainer.py`, `encoders.py`, etc.
+💡 For a better organization of your code you can create a new file `params.py` and move there all your variables (`BUCKET_NAME`, etc) which later on you will import in `data.py`, `trainer.py`, `encoders.py`, etc.
 
 Take a step back and ask yourself what information is now stored inside of our `model.joblib` ?
-🤔 Get help from [day 2 slides](https://kitt.lewagon.com/karr/data-lectures.kitt/07-Data-Engineering_02.slides.html)
 
 💡 Now we have the `preprocessing` and `model` information stored in our model.joblib object.
 
 ## Test your workflow locally first
 
-Here you will run `make run_locally` on your local machine:
-- Train on a few samples first to check that everything runs without error
-- Check that your `model.joblib` was correctly saved on GCP storage
+Let's run `make run_locally` on our local machine:
+- Train on a few data samples first in order to verify that everything runs without any errors
+- Verify that the trained `model.joblib` is correctly saved on `Cloud Storage`
 
-Once everything is working ok, please make sure that:
-- the requirements in `requirements.txt` match your requirements on your virtual environement
-💡 **This step is very important, most of your errors in the next section will be linked to mismatch between requirements on your machine and requirements you specified in `requirements.txt`**
+Once everything is working correctly, make sure that the requirements in `requirements.txt` match the versions of the packages of the virtual environement and that you did not forget any package in the `requirements.txt`.
 
-## Train your model on GCP
+**This step is very important, most of your errors in the next section will be linked to mismatch between requirements on your machine and requirements you specified in `requirements.txt`.**
 
-Edit the `Makefile` and run `make gcp_submit_training` to train your model on GCP (go back to the previous exercise for correct command and to be sure you've defined all the necessary variables).
+## Train your model on the AI Platform
 
-Same as before here:
-- Submit a first training task on a few samples to check that your workflow runs without errors on GCP servers
-- Submit a real training task on more samples to benefit from GCP doing all the work for you ;)
+Edit the `Makefile` and run `make gcp_submit_training` to train your model on GCP (go back to the previous exercise for the correct command and to be sure you've set all the required variables).
 
-💡**NB: Check that all the dependencies are inside the `requirements.txt` file**
+As before:
+- Submit a first training task on a few data samples in order to verify that the code workflow runs correctly on the AI Platform
+- Then submit a real training task on more data samples in order to benefit from the capacity of the AI Platform
 
-## Use your model for predictions
+## Use the trained model for predictions
 
-Now, have a look at `predict.py` and specifically check how we:
-👉 load pipeline model from storage
-👉 apply predictions on test sample
+Now, have a look at `predict.py` and specifically verify how we:
+- Load a trained pipeline from `Cloud Storage`
+- Apply predictions on test data samples
 
-💡**NB: It is pretty much the same code as yesterday, the only difference is that we get our `model.joblib` from the cloud and not from our laptop**
+💡**The code is pretty much the same as yesterday. The only difference is that we get our `model.joblib` from `Cloud Storage` and not from our machine.**
 
 Run and test it:
+
 ```bash
 python predict.py
 ```
 
-You just made your first prediction using a GCP model ! 🚀
+You just made your first prediction using a pipeline trained on the AI Platform ! 🚀

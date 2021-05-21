@@ -4,7 +4,7 @@
 ## Setup
 
 <details>
-  <summary markdown='span'><strong> Prerequisites</strong></summary>
+  <summary markdown='span'><strong> Prerequisites </strong></summary>
 
   In order to work on this recap you need to have a configured GCP account.
 
@@ -17,7 +17,7 @@
 We will be working on the package from the previous recap. You can download the solution for the previous recap from Kitt in `07-Data-Engineering/03-Train-at-scale/Recap` 👌
 
 <details>
-  <summary markdown='span'><strong>How to move it to projects respository?</strong></summary>
+  <summary markdown='span'><strong> How to move it to projects respository? </strong></summary>
 
   ``` bash
   mv downloaded_solution_package ~/code/<user.github_nickname>/taxifare_predictinprod
@@ -51,7 +51,7 @@ You are now ready to 🎉
 Using **FastAPI**, let's create an API for the model trained by the package.
 
 <details>
-  <summary markdown='span'><strong>Solution</strong></summary>
+  <summary markdown='span'><strong> Solution </strong></summary>
 
 
   📐 Let's create an `api/fast.py` file and add a root endpoint for the API
@@ -67,7 +67,7 @@ Using **FastAPI**, let's create an API for the model trained by the package.
 Try to connect to your root endpoint!
 
 <details>
-  <summary markdown='span'><strong>How can I do it?</strong></summary>
+  <summary markdown='span'><strong> How can I do it? </strong></summary>
 
   You should be able to connect to the root endpoint your API, either:
 
@@ -93,7 +93,7 @@ Let's add a `predict` endpoint that will take as parameters the features of our 
 
 
 <details>
-  <summary markdown='span'><strong>📐 Let's code the endpoint</strong></summary>
+  <summary markdown='span'><strong> 📐 Let's code the endpoint </strong></summary>
 
   Since we started the `uvicorn` server with the `--reload` flag, we can test the new version of the code without restarting `uvicorn`.
 
@@ -119,7 +119,7 @@ The DataFrame that we are going to build must contain:
 - Using the exact same data types (`dtypes`)
 
 <details>
-  <summary markdown='span'><strong>💡 Hints</strong></summary>
+  <summary markdown='span'><strong> 💡 Hints </strong></summary>
 
   👉 Have a look at the code of the model in order to make sure what those columns are and what data types they use
 
@@ -132,7 +132,7 @@ The DataFrame that we are going to build must contain:
 </details>
 
 <details>
-  <summary markdown='span'><strong>📐 Let's build a DataFrame from the API parameters and print it</strong></summary>
+  <summary markdown='span'><strong> 📐 Let's build a DataFrame from the API parameters and print it </strong></summary>
 
   Once the code is done, call the endpoint using the **api usage.ipynb** notebook, and see how the DataFrame gets printed in the console. The output should be similar to this:
 
@@ -156,7 +156,7 @@ The DataFrame that we are going to build must contain:
 Now that your API is able to convert the provided parameters into a DataFrame, the last step in order to make a prediction is to load the model/pipeline that we trained.
 
 <details>
-  <summary markdown='span'><strong>Solution</strong></summary>
+  <summary markdown='span'><strong> Solution </strong></summary>
 
   You may train the model locally in order to retrieve a trained `model.joblib` file, or use the one provided with the solution.
 
@@ -185,7 +185,7 @@ Let's put this API in production so that any developer on the Internet can play 
 Let's create a docker image that we will deploy in Cloud Run.
 
 <details>
-  <summary markdown='span'><strong>Solution</strong></summary>
+  <summary markdown='span'><strong> Solution </strong></summary>
 
   First, create a `Dockerfile` containing the instructions allowing to building a docker image:
   - Based on a recent version of python (you may explore [Docker Hub](https://hub.docker.com/))
@@ -206,7 +206,7 @@ Let's create a docker image that we will deploy in Cloud Run.
 Since we intend to push our image to Container Registry, let's define a few environment variables that we will reuse accross the commands that we will use:
 
 <details>
-  <summary markdown='span'><strong>👉 adapt these to your project id, multi-region and region</strong></summary>
+  <summary markdown='span'><strong> 👉 adapt these to your project id, multi-region and region </strong></summary>
 
   ``` bash
   export GCP_PROJECT_ID="le-wagon-data"
@@ -233,14 +233,14 @@ Since we intend to push our image to Container Registry, let's define a few envi
 Make sure you start docker:
 
 <details>
-  <summary markdown='span'><strong>MacOS</strong></summary>
+  <summary markdown='span'><strong> MacOS </strong></summary>
 
 Start the Docker app
 
 </details>
 
 <details>
-  <summary markdown='span'><strong>Linux</strong></summary>
+  <summary markdown='span'><strong> Linux </strong></summary>
 
   ```bash
   sudo service docker start
@@ -264,7 +264,7 @@ docker rmi $(docker images -q)          # delete all images
 👉 What this does is clean your machine from all existing containers and docker images. You would normally be more specific in order to keep containers and images that you might want to reuse or build upon in the future
 
 <details>
-  <summary markdown='span'><strong>Let's build our image! 🔥</strong></summary>
+  <summary markdown='span'><strong> Let's build our image! 🔥 </strong></summary>
 
   ``` bash
   docker build -t $GCR_MULTI_REGION/$GCP_PROJECT_ID/$DOCKER_IMAGE_NAME .
@@ -288,7 +288,7 @@ eu.gcr.io/le-wagon-data/name-of-my-image-in-kebab-case   latest       01f1801a00
 python                                                   3.8-buster   9b9126f2a963   40 hours ago     883MB
 ```
 <details>
-  <summary markdown='span'><strong>Let's run our API in our container to make sure that everything is ok 🎸</strong></summary>
+  <summary markdown='span'><strong> Let's run our API in our container to make sure that everything is ok 🎸 </strong></summary>
 
   ``` bash
   docker run -e PORT=8000 -p 8000:8000 $GCR_MULTI_REGION/$GCP_PROJECT_ID/$DOCKER_IMAGE_NAME
@@ -313,7 +313,7 @@ docker stop 6d38cbecf5ec  # replace with your container id
 ```
 
 <details>
-  <summary markdown='span'><strong>🤔 How can I make sure that the API that I am contacting is running within the container?</strong></summary>
+  <summary markdown='span'><strong> 🤔 How can I make sure that the API that I am contacting is running within the container? </strong></summary>
 
   Just restart the container with a different port, and connect to it:
 
@@ -331,7 +331,7 @@ docker stop 6d38cbecf5ec  # replace with your container id
 
 Now that we verified that our API is up and running in our container, a few last steps are required in order to push our API to production...
 <details>
-  <summary markdown='span'><strong>Let's push our image to Container Registry:</strong></summary>
+  <summary markdown='span'><strong> Let's push our image to Container Registry: </strong></summary>
 
   ``` bash
   docker push $GCR_MULTI_REGION/$GCP_PROJECT_ID/$DOCKER_IMAGE_NAME

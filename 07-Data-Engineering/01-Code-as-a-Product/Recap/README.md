@@ -10,7 +10,7 @@
 Let's create a **bbquote** package that will allow us to retrieve Breaking Bad quotes...
 
 <details>
-  <summary markdown='span'><strong>Hint</strong></summary>
+  <summary markdown='span'><strong>💡 Hint </strong></summary>
 
 <br>
 
@@ -34,7 +34,7 @@ You should see the entire project structure created by the `packgenlite` tool.
 Let's use the [Breaking Bad API](https://breaking-bad-quotes.herokuapp.com/v1/quotes) in order to create a **get_quote** method and add it to our package.
 
 <details>
-  <summary markdown='span'><strong>Hint</strong></summary>
+  <summary markdown='span'><strong>💡 Hint </strong></summary>
 
 <br>
 
@@ -68,7 +68,7 @@ if __name__ == "__main__":
 Let's call our method from the terminal using **python** and **ipython**, and from a notebook...
 
 <details>
-  <summary markdown='span'><strong>Hint</strong></summary>
+  <summary markdown='span'><strong>💡 Hint </strong></summary>
 
 <br>
 
@@ -89,7 +89,7 @@ which will make the package executable from any location and will also listen to
 Let's create a script displaying a breaking bad quote.
 
 <details>
-  <summary markdown='span'><strong>Hint</strong></summary>
+  <summary markdown='span'><strong>💡 Hint </strong></summary>
 
 <br>
 
@@ -112,7 +112,7 @@ Do not forget to add the script to your `setup.py` file!
 Anyone has an idea?
 
 <details>
-  <summary markdown='span'><strong>Hint</strong></summary>
+  <summary markdown='span'><strong>💡 Hint </strong></summary>
 
 <br>
 
@@ -127,7 +127,7 @@ Now open a new terminal window and see what happens!
 Let's write some tests and play with Continuous Integration...
 
 <details>
-  <summary markdown='span'><strong>Hint</strong></summary>
+  <summary markdown='span'><strong>💡 Hint </strong></summary>
 
 <br>
 
@@ -144,7 +144,7 @@ There are multiple reasons for introducing testing in our projects and all of th
 Let's release our package to the world!
 
 <details>
-  <summary markdown='span'><strong>Hint</strong></summary>
+  <summary markdown='span'><strong>💡 Hint </strong></summary>
 
 <br>
 
@@ -153,7 +153,7 @@ Let's release our package to the world!
 In order to be able to display our project on an accessible url we have to use a cloud platform enabling us to build, run and operate applications. Heroku is one of such providers. In order to deploy our application and display the functionality of the `get_quote` method we can:
 
 <details>
-  <summary markdown='span'><strong>1. Create an `app.py` file with simple frontend calling the method</strong></summary>
+  <summary markdown='span'><strong> 1. Create an `app.py` file with simple frontend calling the method </strong></summary>
 
 <br>
 
@@ -171,7 +171,7 @@ f"{quote}, {author}"
 
 
 <details>
-  <summary markdown='span'><strong>2. Add `streamlit` to the `requirements.txt`</strong></summary>
+  <summary markdown='span'><strong> 2. Add `streamlit` to the `requirements.txt` </strong></summary>
 
 <br>
 
@@ -183,7 +183,7 @@ streamlit
 
 
 <details>
-  <summary markdown='span'><strong>3. Add a `setup.sh` and `Procfile` for Heroku configuration</strong></summary>
+  <summary markdown='span'><strong> 3. Add a `setup.sh` and `Procfile` for Heroku configuration </strong></summary>
 
 <br>
 
@@ -212,7 +212,7 @@ web: sh setup.sh && streamlit run app.py
 
 
 <details>
-  <summary markdown='span'><strong>4. Create a new app on heroku</strong></summary>
+  <summary markdown='span'><strong> 4. Create a new app on heroku </strong></summary>
 
 <br>
 
@@ -222,7 +222,7 @@ web: sh setup.sh && streamlit run app.py
 
 
 <details>
-  <summary markdown='span'><strong>5. Push our code to Heroku</strong></summary>
+  <summary markdown='span'><strong> 5. Push our code to Heroku </strong></summary>
 
 <br>
 
@@ -231,7 +231,7 @@ web: sh setup.sh && streamlit run app.py
 
 
 <details>
-  <summary markdown='span'><strong>6. Set the dynos to run our web application</strong></summary>
+  <summary markdown='span'><strong> 6. Set the dynos to run our web application </strong></summary>
 
 <br>
 
@@ -251,7 +251,7 @@ In case the application has an error, don't forget to check the logs: `heroku lo
 Let's activate Continous Deployment...
 
 <details>
-  <summary markdown='span'><strong>Hint</strong></summary>
+  <summary markdown='span'><strong>💡 Hint </strong></summary>
 
 <br>
 

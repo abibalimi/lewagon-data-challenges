@@ -1,30 +1,17 @@
-# Iterate with MlFlow
+## Iterate with MLflow
 
-Now that we have already built a simple model, we want to make it better! The ultimate goal is having a model that makes more accurate predictions on the test set, hence getting a RMSE as low as possible.
+Before carrying on, make sure that you understood:
+- The structure of the `Trainer` class from the first challenge
+- The way to log a metric and a parameter on a hosted MLflow server such as https://mlflow.lewagon.co/
+- How to pass multiple keyword argument parameters to a function or method using `**kwargs` and how to access them in the function or method
 
-**So what can we do?**
+If any of these is unclear, ask for a TA.
 
-There are many different things that make models better:
-- build and try to use different or more features
-- test with different estimators (linear, non linear, etc..)
-- tune hyperparameters
+In order to iterate, we will need a few packages:
 
-In this series of exercise, you will get hands on using the [MLFlow Tracking Api](https://www.mlflow.org/docs/latest/tracking.html) in order to experiment with different features, models and parameters.
-
-Since that now we have a good workflow to make model improvements, it is very important to track all our different experiments. We want to be able to save all our different training runs and compare their performance.
-
-This is what MLFlow tracking is about.
-
-## Summary
-1. [Try different models](#part2)
-2. [Features engineering](#part3)
-
-## Prerequisites
-Before carrying on make sure you understood:
-- the structure of the `Trainer()` class from ex1 is clear, if not please reach out to one of your TA's
-- the way to log a metric and a parameter on [wagon_hosted_mlflow server](https://mlflow.lewagon.co/#/experiments/0)
-- how to pass random number of parameters to a class or functions (`**kwargs`), and how to access them
-- you might need to `pip install category_encoders memoized_property psutil xgboost pygeohash`
+``` bash
+pip install category_encoders memoized_property psutil xgboost pygeohash
+```
 
 We are going to modify the `trainer.py` in order to push the training parameters and metrics to **MLflow**.
 
@@ -32,54 +19,74 @@ Please add the following method to your trainer (and fill its content):
 
 ``` python
     def save_model(self):
-        """Save the model into a .joblib format"""
-
-    # mlflow methods
+        """ Save the trained model into a model.joblib file """
+        pass
 ```
 
 Do not forget to add and import for the `joblib` package and to call the `save_model` method in your `ifmain` block of code (`if __name__ == "__main__":`)
 
-👉 We will call the `save_model()` method in order to push data to MLflow, keep it in mind for later
+👉 We will call the `save_model` method in order to push data to MLflow, keep it in mind for later
 👉 Once you're happy about your final model, you can submit your best model's predictions to Kaggle
 
-Last thing, we suggested here a package structure to organize your code and your run, feel free to tweak is as you like if need be.
-## 0. Define your experiment name
-You will all log your results and parameters of all your runs on the same MLFLOW instance hosted on Le Wagon server.
-From now on, you will have your own `experiment` defined inside `trainer.py` as follow:
-```python
-experiment = "TaxifareModel_YOURNAME"
+Last thing, we suggested a package structure to organize your code and your run, feel free to reorganize it as you wish.
+
+## Set a name for your experiment
+
+As you saw in the previous challenges, it can be pretty hard to identify where your results are stored in a shared hosted MLflow server.
+
+In order to solve this, name your experiment inside of `trainer.py` according to this naming convention:
+``` python
+experiment = "[country code] [city] [login] model name + version"  # 🚨 replace with your country code, city, github_nickname and model name and version
 ```
 
-## 1. Try different models <a name=part2></a>
-- Think about the different estimators that you know that can be used to solve prediction problems
-- Implement a short script that will loop through all estimators, train the model and evaluate it on a validation set.
-👉 Here you might need to tweek `TaxiFareModel` package
-- Be careful: make sure you **cross validate** all your trainings
-- View results with on [wagon_hosted_mlflow server](https://mlflow.lewagon.co/#/experiments/0)
+Now that you are all set, have a go at as many runs as you wish for your experiment and try to increase the performance of your model:
+- Try other estimators
+- Work on feature engineering and selection
 
-And last advice, while building your pipeline, run it on a small datasample, and preferably locally.
+## Try different estimators
 
-## 2. Features engineering and selection <a name=part3></a>
-**Now it is time to be creative!**
+- Think about the different estimators that you know and that could be used in order to solve prediction problems
+- Implement a short script that will loop through the estimators, train the pipeline and evaluate it on a validation set
 
-You just tried different models, and you now see that some estimators may be more powerful than others. Another area where you can experiment is about `features engineering`.
+👉 In order to do that, you might need to tweak the `TaxiFareModel` package
 
-- Try different combinations of features (by removing or adding some) and track the runs.
-💡`direction`, `manhattan distance`, `euclidian distance`, `geohash`
-- Use some "context knowledge" to generate new features that you think might be explaining the fares.
- 👉 For example: we know that taxis apply a fixed amount for airport transfers
-- Try different methods for outliers removals
-- Look at how the size of training set helps reducing the RMSE on the validation set
+⚠️ Make sure you **cross validate** your trainings
 
-### 💡 Suggested method to track influence of Feature Engineering:
-You will use the benefits of Pipelines integrated into our custom class.
+View the results on https://mlflow.lewagon.co/
+
+And as always, while building the pipeline and updating the code, first train your models on small data samples in order to iterate quickly on code errors, and preferably on your own machine.
+
+Then once your modified code is all set, you can play with the big datasets and train your pipeline in the cloud.
+
+## 2. Features engineering and selection
+
+**Now is the time to be creative!**
+
+You have just tried several estimators and saw that some perform better than others. Another area where you can search for performance is feature engineering.
+
+- Try different combinations of features (by removing or adding features) and track the runs
+
+👉 Play with `direction`, `manhattan distance`, `euclidian distance`, `geohash`
+
+- Use some context knowledge in order to generate new features that you think might be explaining the fare amounts
+
+👉 We may suppose that taxis apply a fixed amount for airport transfers
+
+- Try various methods for outliers removals
+
+- Look at how the size of a training set helps reducing the RMSE on the validation set
+
+## Suggested method used in order to track the influence of feature engineering
+
+Use the benefits of pipelines integrated into our custom class.
+
 We will start with one additional feature: `distance_to_center`:
 - Get back to the `data-challenges/07-Data-Engineering/02-ML-Iteration/01-Kaggle-Taxi-Fare` notebook with complete feature engineering
-- Implement a Custom Transformer inside `encoders.py` called `DistanceToCenter` which adds `distance_to_center`
-💡 Use notions from Pipeline's custom transformers here
-- Adapt the `set_pipeline` method inside our main `Trainer` class so that it integrates your new bloc
-- Modify params to feed to our `Trainer` class in order to easily run 2 runs to compare the influence of added feature
-- Launch 2 new runs and check the influence of the `distance_to_center` new feature
+- Implement a custom transformer inside of `encoders.py` called `DistanceToCenter` which adds the `distance_to_center` feature
+- Adapt the `set_pipeline` method inside our main `Trainer` class so that it integrates this new block
+- Modify the parameters fed to our `Trainer` class in order to easily execute 2 runs to compare the influence of the added feature
+- Launch 2 new runs and check the influence of the `distance_to_center` feature
 
-Once you've added the new feature, add as many features as you want and analyse the impact on performances
-Bonus - Use a [PolynomialFeatures](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html) transfomer to generate new features from distance.
+Once you've added the new feature, add as many features as you want and analyse the impact on the performances of the trained pipeline
+
+Bonus: use a [PolynomialFeatures](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html) transfomer to generate new features from distance...

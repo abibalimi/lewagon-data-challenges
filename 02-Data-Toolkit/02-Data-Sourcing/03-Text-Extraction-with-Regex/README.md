@@ -12,7 +12,7 @@ Before we start working with the receipts, let's talk about **Regular Expression
 
 ## Part 1: Working with Regex
 
-First, we need to create a new notebook and make the usual imports:
+First, open your `receipts.ipynb` notebook and make the usual imports:
 
 ```python
 import numpy as np
@@ -412,11 +412,11 @@ If you add this line to your loop you should see all the data you found.
 
 ```
 =>
-    date: 02-01-2017, amount: 3097.00, quantity: 3097.00
-    date: 05-01-2017, amount: 935.00, quantity: 935.00
-    date: 23-01-2017, amount: 2808.00, quantity: 2808.00
-    date: 31-01-2017, amount: 4368.00, quantity: 4368.00
-    date: 06-02-2017, amount: 1988.50, quantity: 1988.50
+    date: 02-01-2017, amount: 3097.00, quantity: 163
+    date: 05-01-2017, amount: 935.00, quantity: 110
+    date: 23-01-2017, amount: 2808.00, quantity: 156
+    date: 31-01-2017, amount: 4368.00, quantity: 182
+    date: 06-02-2017, amount: 1988.50, quantity: 97
         ...
 ```
 

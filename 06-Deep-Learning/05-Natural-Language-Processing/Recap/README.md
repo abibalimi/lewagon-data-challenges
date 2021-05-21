@@ -1,3 +1,1 @@
-```bash
-jupyter notebook recap.ipynb
-```
+Open `recap.ipynb` with Google Colab

@@ -9,8 +9,7 @@ class TestPredictions(ChallengeResultTestCase):
     def test_probability(self):
         self.assertGreater(
             self.result.probability, 0.5,
-            '''Check you stored the probability for the house price to be ABOVE
-            the median price''')
+            'Check probability of survival is above 50 percent')
 
     def test_probability_type(self):
         self.assertIsInstance(

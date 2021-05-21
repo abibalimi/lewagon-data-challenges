@@ -9,7 +9,7 @@ We are going to use **Streamlit** which will allow us to create a website very e
 
 We will create a new project directory for the code of our website.
 
-Again, this directory will be located inside of our *project**s** directory*: `~/code/<user.github_nickname>`.
+Again, this directory will be located inside of our *projects directory*: `~/code/<user.github_nickname>`.
 
 Create a new project directory named `TaxiFareWebsite`.
 
@@ -103,9 +103,9 @@ See ? No need to load a `model.joblib` file in this app, we do not even need to 
 🤔 How could we call our API ? Off course... The `requests` package 💡
 '''
 
-url = 'https://taxifare.lewagon.ai/predict_fare/'
+url = 'https://taxifare.lewagon.ai/predict'
 
-if url == 'https://taxifare.lewagon.ai/predict_fare/':
+if url == 'https://taxifare.lewagon.ai/predict':
 
     st.markdown('Maybe you want to use your own API for the prediction, not the one provided by Le Wagon...')
 
@@ -139,9 +139,7 @@ We have a website of our own running on our machine 🎉
 
 https://taxifare.lewagon.ai/
 
-⚠️ Pay attention to the format of the parameters, this API uses a `/` before the querystring... You need to provide it 😉
-
-https://taxifare.lewagon.ai/predict_fare/?key=2012-10-06%2012:10:20.0000001&pickup_datetime=2012-10-06%2012:10:20%20UTC&pickup_longitude=40.7614327&pickup_latitude=-73.9798156&dropoff_longitude=40.6513111&dropoff_latitude=-73.8803331&passenger_count=2
+https://taxifare.lewagon.ai/predict?pickup_datetime=2012-10-06%2012:10:20&pickup_longitude=40.7614327&pickup_latitude=-73.9798156&dropoff_longitude=40.6513111&dropoff_latitude=-73.8803331&passenger_count=2
 
 Let's inspect `app.py` and check what is being done inside...
 
@@ -170,10 +168,10 @@ We need to add a `setup.py`, a `MANIFEST.in`, and a `requirements.txt` containin
 Let's copy the files provided in the challenge to your web project...
 
 <details>
-<summary> 💡 Hint: how to copy `setup.py` and other provided files to the web project ? </summary>
+  <summary markdown='span'><strong> 💡 Hint: how to copy `setup.py` and other provided files to the web project ? </strong></summary>
 
 ``` bash
-cp ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/05-User-interface/02-Streamlit-for-restitution/* ~/code/<user.github_nickname>/TaxiFareWebsite
+cp -r ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/05-User-interface/02-Streamlit-for-restitution/* ~/code/<user.github_nickname>/TaxiFareWebsite
 ```
 
 </details>

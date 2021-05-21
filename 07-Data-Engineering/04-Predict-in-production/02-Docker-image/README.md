@@ -21,6 +21,11 @@ Your project should look like this:
 
 ```
 .
+├── api
+│   ├── __init__.py
+│   └── fast.py
+├── notebooks
+│   └── API\ usage.ipynb
 ├── TaxiFareModel
 │   ├── __init__.py
 │   ├── data.py
@@ -29,15 +34,11 @@ Your project should look like this:
 │   ├── params.py
 │   ├── trainer.py
 │   └── utils.py
-├── api
-│   ├── __init__.py
-│   └── fast.py
-├── notebooks
-│   └── API\ usage.ipynb
 ├── Dockerfile
-├── predict.py
 ├── Makefile
 ├── MANIFEST.in
+├── model.joblib
+├── predict.py
 ├── requirements.txt
 └── setup.py
 ```

@@ -1,44 +1,44 @@
 ## From Notebook to package 🎁
 
-It is time to move away from Jupyter Notebook, and start writing reusable code with python packages, modules and classes.
+It is time to move away from Jupyter Notebook, and start writing reusable code with python packages and modules.
 
-In the exercise, nothing new, simply copy pasting functions we already implemented in the previous challenge and organize them inside different modules.
+In this challenge we will not implement new functionalities. We will reorganise the existing code into packages and modules.
 
 ### Package structure 🗺
 
-We have created for you the following structure:
+We have created for you the following package structure:
 
 ```bash
-├── TaxiFareModel
-│   ├── data.py       # functions to get and clean data
-│   ├── encoders.py   # your custom encoders and transformers for our Pipeline
-│   ├── trainer.py    # utility functions
-│   └── utils.py      # containing main class that will run our Pipeline
+.
+└── TaxiFareModel
+    ├── data.py       # functions to retrieve and clean data
+    ├── encoders.py   # custom encoders and transformers for the pipeline
+    ├── trainer.py    # main class that will build and train the pipeline
+    └── utils.py      # utility functions
 ```
 
 ### Setup your package ⚙️
 
-You are going to create a package from your pipeline. To achieve this, we provide you a minimal template generator package [`packgenlite`](https://github.com/krokrob/packgenlite).
+Let's create a packaged project from the code of the notebook. In order to achieve this, we provide you with a minimal template generator package: [`packgenlite`](https://github.com/krokrob/packgenlite).
 
-- Install the `packgenlite` package from Github
+- Install the `packgenlite` package from GitHub
 
-```bash
+``` bash
 pip install git+https://github.com/krokrob/packgenlite
 ```
 
-- Create a new project `TaxiFareModel` in your working directory
+- Create a new packaged project called `TaxiFareModel` in your *projects directory*: `~/code/<user.github_nickname>`.
 
-```bash
+``` bash
 cd ~/code/<user.github_nickname>
 packgenlite TaxiFareModel
 ```
 
-- Copy the code we provide into your project
+- Copy the code that we provide into your project
 
 <details>
-  <summary markdown='span'><strong>💡 Hint</strong></summary>
+  <summary markdown='span'><strong>💡 How to copy the code from the challenge to the packaged project ? </strong></summary>
 
-<br>
 
 ```bash
 cp -r ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/02-ML-Iteration/03-Notebook-to-package/*.py ~/code/<user.github_nickname>/TaxiFareModel/TaxiFareModel
@@ -46,8 +46,9 @@ cp -r ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/02-ML-It
 
 </details>
 
-- Make sure your package has the following structure
-```bash
+- Make sure that your package has the following structure using the `tree` command:
+
+``` bash
 .
 ├── MANIFEST.in
 ├── Makefile
@@ -72,17 +73,15 @@ cp -r ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/02-ML-It
 
 👍 Your package is ready to be implemented!
 
-### Implement your package 🛠
+### Download the dataset locally
 
-#### Download the datasets locally
-
-- Download the datasets `train.csv` and `test.csv` from [Kaggle (`Data` tab)](https://www.kaggle.com/c/new-york-city-taxi-fare-prediction/data) if you have not done it yet
+- Download the `train.csv` and `test.csv` datasets from [Kaggle (`Data` tab)](https://www.kaggle.com/c/new-york-city-taxi-fare-prediction/data)
 - Move them under the `raw_data` folder
 - Download 2 subsets of the full `train.csv` dataset:
   - [train_1k.csv](https://wagon-public-datasets.s3.amazonaws.com/taxi-fare-ny/train_1k.csv) with 1_000 rows
   - [train_10k.csv](https://wagon-public-datasets.s3.amazonaws.com/taxi-fare-ny/train_10k.csv) with 10_000 rows
 - Move them to the `raw_data` folder
-- Make sure your package has the following architecture:
+- Make sure your package has the following structure:
 
 ```bash
 .
@@ -111,29 +110,25 @@ cp -r ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/02-ML-It
     └── __init__.py
 ```
 
-#### `data.py`
+Now that everything is set, let's inspect the content of the provided files...
 
-Inspect the functions `get_data` and `clean_data` that are already given to you.
+### `data.py`
 
-_NB: We provide you with the same functions so that we all get and clean data the same way._
+Inspect the provided `get_data` and `clean_data` functions.
 
-#### `utils.py`
+### `utils.py`
 
-`utils.py` is where you can store :
-- the `haversine_distance` method
-- the `compute_rmse` method
+Inspect the provided `haversine_vectorized` and `compute_rmse` functions.
 
-#### `encoders.py`
+You can store the `haversine_distance` function here if you use it.
 
-Let's store the custom encoders and transformers you have for distance and time features in `encoders.py`.
+### `encoders.py`
 
-**Reminder**
+Let's store the custom encoders and transformers for distance and time features here.
 
-Let us be clear about the use of `encoders.py` here:
-- It contains all the custom pipeline preprocessing blocks not provided by sklearn
-- These preprocessing blocks are the `DistanceTransformer` and the `TimeFeaturesEncoder`
+This code file will store all the custom pipeline preprocessing blocks. Meaning the `DistanceTransformer` and `TimeFeaturesEncoder`.
 
-#### `trainer.py`
+### `trainer.py`
 
 Implement the main class here.
 
@@ -143,34 +138,15 @@ The `Trainer` class is the main class. It should have:
 - a `run` method that trains the pipeline
 - an `evaluate` method evaluating the model
 
-Make sure you are confident with the following notions:
+Make sure that you are confident with the following notions:
 - attributes and methods of a class
-- `**kwargs` argument of a function and how to use it, (help [HERE](https://www.programiz.com/python-programming/args-and-kwargs) if unclear)
+- the `**kwargs` argument of a function and how to use it, (help [HERE](https://www.programiz.com/python-programming/args-and-kwargs) if unclear)
 
-```python
-class Trainer(object):
-    def __init__(self, X, y):
-        """
-            X: pandas DataFrame
-            y: pandas Series
-        """
-        self.pipeline = None
-        self.X = X
-        self.y = y
+If you are not confident with any of these elements or the general structure of the code, ask for a TA.
 
-    def set_pipeline(self):
-        """defines the pipeline as a class attribute"""
+### Test your packaged project
 
-    def run(self):
-        """set and train the pipeline"""
-
-    def evaluate(self, X_test, y_test):
-        """evaluates the pipeline on df_test and return the RMSE"""
-```
-
-#### Test your package!
-
-Once you have everything setup, test that it works by running:
+Once you have everything implemented, test that your packaged project works by running:
 
 ```bash
 python -m TaxiFareModel.trainer
@@ -182,13 +158,13 @@ Or
 python -i TaxiFareModel/trainer.py
 ```
 
-#### Hints for debugging 🐛
+### Hints for debugging 🐛
 
-- Do not hesitate to breakdown your code into smaller calls for debugging
-- Use [if \_\_name__ == '\_\_main__'](https://www.geeksforgeeks.org/what-does-the-if-__name__-__main__-do/) at the end of each `.py` file to debug
-- For instance to debug data.py, add at the end:
+- Do not hesitate to breakdown your code into smaller function calls for debugging
+- Use [if \_\_name__ == '\_\_main__'](https://www.geeksforgeeks.org/what-does-the-if-__name__-__main__-do/) at the end of each `.py` file in order to debug
+- For instance to debug `data.py`, add at the end:
 
-```python
+``` python
 # TaxiFareModel/data.py
 
 if __name__ == '__main__':
@@ -203,9 +179,9 @@ In [1]: %run TaxiFareModel/data.py
 In [2]: df.shape
 ```
 
-### Install your package
+### Install your packaged project
 
-When your package is all set, you should install it locally so that it can be imported anywhere. From your package folder, run:
+When your project is all set, you should install it locally so that its packages can be imported anywhere. From the directory of your project, run:
 
 ```bash
 pip install -e .

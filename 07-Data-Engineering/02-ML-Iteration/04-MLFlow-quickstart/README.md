@@ -1,72 +1,84 @@
-# Context
+## Context
 
-Now that we have already built a simple model, we want to make it better! The ultimate goal is having a model that makes more accurate predictions on the test set, hence getting a RMSE as low as possible.
+Now that we have built a simple model, we want to make it better! The ultimate goal is to have a model that makes more accurate predictions on the test set, hence getting a RMSE as low as possible.
 
 **So what can we do?**
 
-There are many different things that make models better:
-- build and try to use different or more features
-- test with different estimators (linear, non linear, etc..)
-- tune hyperparameters
+We can try to improve our model by:
+- building and trying to use different or additional features
+- testing different estimators (linear, non linear, etc)
+- tuning the hyperparameters of our pipeline
+
+The problem is that it is often hard to keep track of all these experimentations. There are many different parameters that we can tune and many different combinations.
+
+👉 **[MLflow](https://www.mlflow.org/docs/latest/concepts.html) is a very useful tool to help us in machine learning models iteration.**
+
+In this series of exercise, you will get hands on using the [MLflow Tracking API](https://www.mlflow.org/docs/latest/tracking.html) in order to experiment with different features, models and parameters.
+
+We now have a good workflow for bringing improvements to our model. We want to track all of our experiments and to be able to save the training runs and compare their performance. This is what MLflow Tracking is about.
+
+## Setup
+
+Copy `ml_flow_test.py` from the challenge directory to the directory of your packaged project.
+
+<details>
+  <summary markdown='span'><strong>💡 How to copy `ml_flow_test.py` from the challenge to the packaged project ? </strong></summary>
 
 
-The problem is that it is often hard to keep track of this different experimentations. There are many different parameters that we can tune and many different combinations.
-
-👉 **[MLFlow](https://www.mlflow.org/docs/latest/concepts.html) is a very useful tool to help us in machine learning models iteration.**
-
-In this series of exercise, you will get hands on using the [MLFlow Tracking Api](https://www.mlflow.org/docs/latest/tracking.html) in order to experiment with different features, models and parameters.
-
-Since that now we have a good workflow to make model improvements, it is very important to track all our different experiments. We want to be able to save all our differents training runs and compare their performance.
-
-This is what MLFlow tracking is about.
-
-## MlFlow Quickstart
-Install MLFlow:
 ```bash
+cp -r ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/02-ML-Iteration/04-MLFlow-quickstart/ml_flow_test.py ~/code/<user.github_nickname>/TaxiFareModel
+```
+
+</details>
+
+## MLflow quickstart
+
+Install MLflow:
+
+``` bash
 pip install mlflow
 ```
-Now Open a new terminal window and launch mlflow ui **in your current directory (where `ml_flow_test.py` is)**:
-```bash
+
+Now open a new terminal window in your packaged project directory and run the content of `ml_flow_test.py`:
+
+``` bash
+cd ~/code/<user.github_nickname>/TaxiFareModel
+python ml_flow_test.py
+```
+
+Explore the content of `ml_flow_test.py`. By running this file you just created 1 experiment having 2 runs each containing 1 metric and 1 param.
+
+In order to explore the results, launch the MLflow UI in the same directory:
+
+``` bash
 mlflow ui
 ```
 
-👉 Check [here](http://127.0.0.1:5000/#/) your local mlflow tracking server
+👉 And have a look in the interface: http://localhost:5000/
 
-MLFlow defines experiments and runs, you have different runs inside one experiment
-For instance for experiment *model_experiment*, you'll have :
- - 1 run for a linear model
- - 1 run for Randomforest model
-For each run you will logs parameters and metrics
+You just saved your first experiment in a local MLflow server on your machine 🎉
 
-Open `ml_flow_test.py` and inspect the code that will allow you to log your first params on your local instance:
+That is just fine, but what if you want to share your results with your team or want to train your model on another machine... How will you be able to contact your machine then?
 
-```python
-from mlflow.tracking import MlflowClient
-EXPERIMENT_NAME = "test_experiment"
-client = MlflowClient()
-try:
-    experiment_id = client.create_experiment(EXPERIMENT_NAME)
-except BaseException:
-    experiment_id = client.get_experiment_by_name(EXPERIMENT_NAME).experiment_id
+## Hosted MLflow server
 
-for model in ["linear", "Randomforest"]:
-    run = client.create_run(experiment_id)
-    client.log_metric(run.info.run_id, "rmse", 4.5)
-    client.log_param(run.info.run_id, "model", model)
-```
+In order to solve this issue, we will be using a hosted MLflow server. The server will be reachable from any machine on the Internet. It will be able to store the results of experiments resulting from the training of models on any machine connected to the Internet. Anyone on the Internet will be able to observe the results of the experiments.
 
-## Hosted MLFlow server
+We will be using a Le Wagon hosted MLflow server in order to do this : https://mlflow.lewagon.co/
 
-For simplicity purpose, le wagon ran `mlflow ui` on its own server so that we all have the same [mlflow server](https://mlflow.lewagon.co/#/experiments/0) to log our future experiments
+Let's log the same parameters on the remote MLflow server. In order to do that, we will slightly modify `ml_flow_test.py`:
 
-We will now log same parameter on remote instance. For that we will slightly modify `ml_flow_test.py` to log info to the remote server:
-```python
+``` python
 import mlflow
 from mlflow.tracking import MlflowClient
+
 EXPERIMENT_NAME = "test_experiment"
+
 # Indicate mlflow to log to remote server
 mlflow.set_tracking_uri("https://mlflow.lewagon.co/")
+
 client = MlflowClient()
+
 try:
     experiment_id = client.create_experiment(EXPERIMENT_NAME)
 except BaseException:
@@ -83,14 +95,33 @@ for model in ["linear", "Randomforest"]:
     client.log_param(run.info.run_id, "model", model)
     client.log_param(run.info.run_id, "student_name", yourname)
 ```
-Check out [mlflow server](https://mlflow.lewagon.co/) to visualise your logs
 
-## Mlfow integrated to our Taxifare ml project
-Now we will add a few methods to our existing class in order to start logging training runs
-For that we will add following methods to our Trainer() class (don't forget the necessary imports!):
-```python
+Now, run the code once again:
+
+``` bash
+python ml_flow_test.py
+```
+
+Let's have a look at the results: https://mlflow.lewagon.co/
+
+What's that ? Are you having trouble finding out your results or the "test_experiment" amongst the myriads of other experiments created by all the students of the bootcamp ?
+
+👉 This is why we highly encourage you to create a custom experiment name matching the `[country code] [city] [login] model name + version` naming convention
+
+By the way, here is [the default experiment](https://mlflow.lewagon.co/#/experiments/94) 🎉
+
+## Integrating MLflow to our packaged project
+
+No that we are up to speed with MLflow, let's see how to integrate it in a project.
+
+We will add a few methods to our existing code in order to start logging training runs.
+
+Let's add the following methods to our `Trainer` class (do not forget the required imports):
+
+``` python
 class Trainer():
-    ...
+
+    # ...
 
     @memoized_property
     def mlflow_client(self):
@@ -116,25 +147,29 @@ class Trainer():
 ```
 
 Notice how [@memoized_property](https://pypi.org/project/memoized-property/) is actually quite powerful:
-- it is a decorator
-- is defines its following function as a [property](https://www.geeksforgeeks.org/python-property-function/)
-- the property is memoized <=> only set at first call
+- It is a decorator
+- It defines its decorated function as a [property](https://www.geeksforgeeks.org/python-property-function/)
+- The property is memoized <=> only set at first call
 
-## Log first params and metrics
-We've done the hard work, we can now easily log any param and metric by simply adding
+Once the code is appended to our trainer, we can log parameters and metrics in MLflow from any method in our `Trainer` class by using:
+- `self.mlflow_log_param(param_name, param_value)`
+- `self.mlflow_log_metric(metric_name, metric_value)`
 
-`self.mlflow_log_param(param, value)` or `self.mlflow_log_metric(metric_name, metric_value)`
+One last thing: we need to define the URL of the MLflow server and the name of our experiment in our class :
 
-anywhere in our class:
-- Define 2 global variables at the beginning `trainer.py`:
-```python
+``` python
 MLFLOW_URI = "https://mlflow.lewagon.co/"
-myname = "youshouldwriteyournameinstead"
-EXPERIMENT_NAME = f"TaxifareModel_{myname}"
+EXPERIMENT_NAME = "[country code] [city] [login] model name + version"  # 🚨 replace with your country code, city, github_nickname and model name and version
 ```
-- log the model name and rmse at correct place inside `Trainer()` class
-- run whole workflow:
-```bash
+
+Let's log a few things in our class:
+- Log the name of the estimator used for the training
+- Log the RMSE of the trained model
+
+Once the code is up, just run it:
+
+``` bash
 python -m TaxiFareModel.trainer
 ```
-- check it logged correctly on [wagon hosted mlflow server](https://mlflow.lewagon.co/)
+
+... And verify that it logged correctly on https://mlflow.lewagon.co/
