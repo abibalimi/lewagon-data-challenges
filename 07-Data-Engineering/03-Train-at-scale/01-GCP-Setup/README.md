@@ -14,7 +14,7 @@ Beyond training models, you will see how you can make your models available to t
 
 Now that you have a working setup, we are going to start using the products provided by the GCP platform.
 
-GCP provides tens of products, but we will be interested mainly by a few products:
+GCP provides tens of products, but we will be interested mainly in three products:
 - `Cloud Storage` allows to store data in the cloud. We will use it in order to store our datasets and our trained models
 - `AI Platform` allows to train models in the cloud. We will use it in order to train our models
 - `Cloud Run` allows to run containerized applications in the cloud. We will use it in order to host our API

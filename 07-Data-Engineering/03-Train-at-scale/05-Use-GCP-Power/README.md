@@ -1,7 +1,7 @@
 # Objective
 
 Let's improve our model either by
-- training it on bigger sample
+- training it on a bigger sample
 - tuning its hyperparameters
 
 This last part obviously takes longer than the time you have left today, the aim of the exercise is for you to see how you can take advantage of GCP's big machines
@@ -11,7 +11,7 @@ This last part obviously takes longer than the time you have left today, the aim
 GCP AI Platform gives you the possibility to change machine types
 🚨 Be careful, bigger machines are obviously more expensive 🚨
 
-Try changing the machine types to speedup the training on a bigger sample
+Try changing the machine types to speed the training up on a bigger sample
 Check [GCP VM pricing](https://cloud.google.com/ai-platform/training/pricing?hl=fr), then add these parameters to your `gcp_submit_training` make command:
 
 ```bash
@@ -37,4 +37,3 @@ If you have time try and run a RandomSearch on a larger data sample.
 - With a GBM model, you can search for the best `learning_rate` for example, while choosing a fixed value for number of trees.
 
 How much did your model improve vs without grid search?
-

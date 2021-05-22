@@ -4,7 +4,7 @@ The objective here is to sensitize to scaling issues and how to bypass certain c
 
 # Dataset size optimization
 
-One of the main challenges adressed when dealing with a large dataset is `memory` consumption.
+One of the main challenges when dealing with a large dataset is `memory` consumption.
 If your dataset does not fit in RAM memory then it can lead to slower performances or even worse `out of memory ERROR`.
 
 A first very simple trick to deal with this issue is to reduce the size of our dataset by optimizing the size of the types of the features.
@@ -26,11 +26,11 @@ By default :
 - every int as `int64`
 
 Which in some cases is not optimized at all.
-For instance downcasting a dataframe containing only integer columns in range [0:20] from `int64` to `int8` would divide by 4 its size
+For instance downcasting a dataframe containing only integer columns in range [0:20] from `int64` to `int8` would decrease its size four times
 
 ## Exercise
 
-Implement a function `df_optimized` optimizing size of a dataset:
+Implement a function `df_optimized` optimizing the size of a dataset:
 
 ```python
 def df_optimized(df, verbose=True, **kwargs):

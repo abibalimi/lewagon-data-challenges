@@ -12,7 +12,7 @@ Remember that a packaged python project is nothing more than
 - a (main) directory containing a set of directories and sub directories containing files
 - having a `setup.py` file at the root (the main directory) of the project
 - having a `requirements.txt` file at the root of the project listing the packages required in order for the project to function correctly
-- having sub directories containing python files (`.py` files also knwown as modules)
+- having sub directories containing python files (`.py` files also known as modules)
 - the sub directories (also known as packages) containing python files should also contain an `__init__.py` file
 
 Having a python project packaged basically means that its code will be able to function in any context, since its `setup.py` and dependencies (`requirements.txt`, `MANIFEST.in`) formally describe how to use it.
@@ -172,7 +172,7 @@ But since we retrieve the data for the training from `Cloud Storage` and store t
 
 ## Run the code on the AI Platform
 
-Here we will launch the exact same code as before, the only difference is that the code will be executed on a GCP data center through the `AI Platform`.
+Now we will launch the exact same code as before, the only difference is that the code will be executed on a GCP data center through the `AI Platform`.
 
 GCP will:
 
@@ -204,7 +204,7 @@ The GCP Command Line Interface (CLI) `gcloud` installed on your computer allows 
 
 In particular it provides a command which allows us to request the online training of the model provided in our packaged project.
 
-Do not be scared by the command below. If you read thoroughly, then take a look at the `Makefile`, you will see that it only provides the parameters required in order to describe the environment in which we want the code of our packaged project to run.
+Do not be scared by the command below. If you read the below explanations thoroughly, then take a look at the `Makefile`, you will see that it only provides the parameters required in order to describe the environment in which we want the code of our packaged project to run.
 
 The `gcloud ai-platform jobs submit training` command requires:
 - `JOB_NAME`: an arbitrary name allowing us to identify a training occurence, which will be visible in the [GCP console](https://console.cloud.google.com/ai-platform/jobs) once it has ran
@@ -212,7 +212,7 @@ The `gcloud ai-platform jobs submit training` command requires:
 - `BUCKET_TRAINING_FOLDER`: the bucket directory where GCP will store our packaged project used for the training. If anything goes wrong you might want to have a look at the content and verify that the zipped project contains everything you expect it to
 - `PACKAGE_NAME`: the name of the package inside of our packaged project containing the code that will handle the data and train the model
 - `FILENAME`: the main code file of the package for the training
-- `PYTHON_VERSION`: the version of python to be used for the training
+- `PYTHON_VERSION`: the version of Python to be used for the training
 - `RUNTIME_VERSION`: the version of the machine learning libraries provided by GCP for the training
 - `REGION`: the physical region of the server on which to train (we will use the same region as the region we used for our bucket in order to reduce the latency when fetching the data)
 
@@ -229,7 +229,7 @@ gcloud ai-platform jobs submit training ${JOB_NAME} \
 
 👉 [Full documentation here](https://cloud.google.com/sdk/gcloud/reference/ai-platform/jobs/submit/training)
 
-You can imagine how painful it would be to mnually write this very long command every time we want to submit a training task to GCP.
+You can imagine how painful it would be to manually write this very long command every time we want to submit a training task to GCP.
 
 That's where our precious `Makefile` comes into action with its variables and commands.
 
