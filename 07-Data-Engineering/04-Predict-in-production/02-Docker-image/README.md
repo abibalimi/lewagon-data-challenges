@@ -192,7 +192,7 @@ Let's play with the API an receive your first prediction!
 ``` python
 import requests
 
-taxifare_api_url = "http://127.0.0.1:8000/predict_fare?FILL&THE&PARAMS&HERE"
+taxifare_api_url = "http://127.0.0.1:8000/predict?FILL&THE&PARAMS&HERE"
 
 response = requests.get(
     taxifare_api_url

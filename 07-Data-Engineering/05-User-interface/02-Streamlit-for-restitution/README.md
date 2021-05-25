@@ -203,6 +203,15 @@ Create an app for our website on **Heroku**... Remember the app name should be u
 heroku create YOUR_APP_NAME --region eu
 ```
 
+Remember that **Heroku** uses git in order to retrieve the files of your project to put in production.
+
+👉 You need to `git add` and `git commit` the files of your project that you want to push to production before pushing your code to **Heroku**
+
+``` bash
+git add --all
+git commit -m "code ready to be deployed to production"
+```
+
 Finally, we can push our website to **Heroku** 🚀
 
 ```bash
