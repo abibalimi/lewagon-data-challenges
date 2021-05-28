@@ -1,4 +1,12 @@
 
+## Objective
+
+Use **FastAPI** in order to create an API for your model.
+
+Run that API on your machine.
+
+## Context
+
 Now that we have a performant model trained in the cloud, we will expose it to the world 🌍
 
 We will create a **Prediction API** for our model, run it on our machine in order to make sure that everything works correctly. Then we will put it in the cloud so that everyone can play with our model!
@@ -79,7 +87,7 @@ We are going to create our own API allowing other developers to ask our model fo
 
 Your project should look like this (use the `tree` command):
 
-```
+``` bash
 .
 ├── api
 │   ├── __init__.py
@@ -211,7 +219,7 @@ The columns should match the format of the `X_train` used in order to train the 
 
 Here are the data types of the columns of `X_train`:
 
-```
+``` bash
 key                     object
 pickup_datetime         object
 pickup_longitude        float64

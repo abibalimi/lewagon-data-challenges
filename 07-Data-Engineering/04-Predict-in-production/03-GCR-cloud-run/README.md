@@ -1,4 +1,12 @@
 
+## Objective
+
+Use **Container Registry** in order to store in the cloud the Docker image built for your API.
+
+Deploy on **Cloud Run** a container exposing your API to the world.
+
+## Context
+
 In the previous exercise, we have built a **Prediction API** Docker image that we are able to run on our local machine.
 
 There are 2 remaining steps in order to enable the developers from anywhere around the world to play with it:

@@ -58,7 +58,7 @@ Then, let's copy the `Makefile` that is provided inside of the project... It wil
 
 You project should look like this:
 
-```
+``` bash
 .
 ├── Makefile
 └── app.py
@@ -178,7 +178,7 @@ cp -r ~/code/<user.github_nickname>/data-challenges/07-Data-Engineering/05-User-
 
 The project should now look like this:
 
-```
+``` bash
 .
 ├── MANIFEST.in
 ├── Makefile

@@ -55,7 +55,7 @@ Now we will go through all the cells of `boilerplate.ipynb` one by one and progr
 
 We may adopt the following structure for the code of the package:
 
-```
+``` bash
 taxifare
 ├── __init__.py
 ├── data.py

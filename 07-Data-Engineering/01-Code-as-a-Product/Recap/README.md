@@ -14,15 +14,17 @@ Let's create a **bbquote** package that will allow us to retrieve Breaking Bad q
 
 <br>
 
-**`packgenlite package-name`**
+``` bash
+packgenlite package-name
+```
 
 In order to create a new package you can run:
 
-`packgenlite bbquote`
-
-`cd bbquote`
-
-`tree`
+``` bash
+packgenlite bbquote
+cd bbquote
+tree
+```
 
 You should see the entire project structure created by the `packgenlite` tool.
 </details>
@@ -176,7 +178,7 @@ f"{quote}, {author}"
 <br>
 
 requirements.txt:
-```
+``` python
 streamlit
 ```
 </details>
@@ -188,7 +190,7 @@ streamlit
 <br>
 
 setup.sh:
-```
+``` bash
 mkdir -p ~/.streamlit/
 
 echo "\
@@ -205,7 +207,7 @@ port = $PORT\n\
 ```
 
 Procfile:
-```
+``` bash
 web: sh setup.sh && streamlit run app.py
 ```
 </details>
@@ -216,7 +218,9 @@ web: sh setup.sh && streamlit run app.py
 
 <br>
 
-`heroku create <unique-app-name>`
+``` bash
+heroku create <unique-app-name>
+```
 
 </details>
 
@@ -226,7 +230,10 @@ web: sh setup.sh && streamlit run app.py
 
 <br>
 
-`git push heroku master`
+``` bash
+git push heroku master
+```
+
 </details>
 
 
@@ -235,7 +242,10 @@ web: sh setup.sh && streamlit run app.py
 
 <br>
 
-`heroku ps:scale web=1`
+``` bash
+heroku ps:scale web=1
+```
+
 </details>
 
 
@@ -258,7 +268,7 @@ Let's activate Continous Deployment...
 Yes, this process is called Continuous Deployment. With additional configuration in the `pythonpackage.yml` we can ask GitHub to deploy the latest code to Heroku for us if all the tests will pass.
 
 
-**1. Do not forget to fill `HEROKU_API_KEY` and `HEROKU_EMAIL` in the GitHub secrets of the repository**
+⚠️ Do not forget to fill `HEROKU_API_KEY` and `HEROKU_EMAIL` in the GitHub secrets of the repository
 
 </details>
 <br>

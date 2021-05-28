@@ -1,4 +1,12 @@
 
+## Objective
+
+Use **Kubernetes Engine** in order to deploy a container at scale.
+
+Go through the steps to deploy a Docker image for your API at scale.
+
+## Context
+
 Is the computing power of a single Cloud Run server not enough to server your customer base?
 
 Let's scale massively using a cluster of hosts serving your API.

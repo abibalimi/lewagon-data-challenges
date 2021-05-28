@@ -1,4 +1,12 @@
 
+## Objective
+
+Use **Docker** in order to build a Docker image for your API project.
+
+Start on your machine a container hosting your API.
+
+## Context
+
 We now have a working **Prediction API**, but it is not much use if it can only be queried from our local machine.
 
 We want to make it available to the world. In order to do that, the first step is to create a **Docker image** that will contain both the environement required in order to allow our code to run + the code of our API. Of course, remember that we still need the code of our pipeline along with the code of the API in order to be able to load our `model.joblib` file.
@@ -19,7 +27,7 @@ In order to do so copy the provided `Dockerfile` in your project (or create an e
 
 Your project should look like this:
 
-```
+``` bash
 .
 ├── api
 │   ├── __init__.py

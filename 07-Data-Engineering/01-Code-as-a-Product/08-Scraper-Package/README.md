@@ -29,7 +29,7 @@ This file contains the list of the dependencies of the package.
 
 For each package, parse the content of the `requirements.txt` file and create a dependency graph:
 
-```
+``` bash
 urllib3
 ├── coverage
 ├── tornado

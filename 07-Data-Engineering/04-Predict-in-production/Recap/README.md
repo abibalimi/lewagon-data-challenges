@@ -134,20 +134,20 @@ The DataFrame that we are going to build must contain:
 <details>
   <summary markdown='span'><strong> 📐 Let's build a DataFrame from the API parameters and print it </strong></summary>
 
-  Once the code is done, call the endpoint using the **api usage.ipynb** notebook, and see how the DataFrame gets printed in the console. The output should be similar to this:
+Once the code is done, call the endpoint using the **api usage.ipynb** notebook, and see how the DataFrame gets printed in the console. The output should be similar to this:
 
-  Here is the print of our DataFrame:
+Here is the print of our DataFrame:
 
-  ```
-    Unnamed: 0   key          pickup_datetime  pickup_longitude  pickup_latitude  dropoff_longitude  dropoff_latitude  passenger_count
-  0          0  truc  2020-12-12 12:12:12 UTC         41.123456        41.123456          41.123456         41.123456                3
-  ```
+``` bash
+Unnamed: 0   key          pickup_datetime  pickup_longitude  pickup_latitude  dropoff_longitude  dropoff_latitude  passenger_count
+0          0  truc  2020-12-12 12:12:12 UTC         41.123456        41.123456          41.123456         41.123456                3
+```
 
-  Here we can see the call to our API that we just made using the notebook (notice how we see the parameters passed in the URL):
+Here we can see the call to our API that we just made using the notebook (notice how we see the parameters passed in the URL):
 
-  ```
-  INFO:     127.0.0.1:52224 - "GET /predict?pickup_datetime=2020-12-12+12%3A12%3A12+UTC&lon1=41.123456&lat1=41.123456&lon2=41.123456&lat2=41.123456&passcount=3 HTTP/1.1" 200 OK
-  ```
+``` bash
+INFO:     127.0.0.1:52224 - "GET /predict?pickup_datetime=2020-12-12+12%3A12%3A12+UTC&lon1=41.123456&lat1=41.123456&lon2=41.123456&lat2=41.123456&passcount=3 HTTP/1.1" 200 OK
+```
 
 </details>
 
@@ -282,7 +282,7 @@ docker images
 
 The output should be similar to this one (notice how we could have changed the name of the image):
 
-```
+``` bash
 REPOSITORY                                               TAG          IMAGE ID       CREATED          SIZE
 eu.gcr.io/le-wagon-data/name-of-my-image-in-kebab-case   latest       01f1801a00fa   18 seconds ago   1.62GB
 python                                                   3.8-buster   9b9126f2a963   40 hours ago     883MB
@@ -355,7 +355,7 @@ Now that we verified that our API is up and running in our container, a few last
 
   The URL of your production API is output by the command line and should be similar to:
 
-  ```
+  ``` bash
   https://name-of-my-image-in-kebab-case-xi54eseqrq-ew.a.run.app
   ```
 

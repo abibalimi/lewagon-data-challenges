@@ -1,4 +1,12 @@
 
+## Objective
+
+Use **Compute Engine** in order to play with a virtual machine in the cloud.
+
+Go through the **Le Wagon Setup** on your virtual machine in order to code and build Docker images in the cloud.
+
+## Context
+
 This exercise is optional.
 
 Do you have a internet connection with a limited bandwitdh or does your computer suffer in any way when building Docker images? Let's use Google Compute Engine in order to have a server in the cloud do the hard work for us.

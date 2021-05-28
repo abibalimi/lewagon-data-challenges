@@ -1,4 +1,8 @@
 
+## Objective
+
+Use **Billing** in order to monitor your expenses in the Google Cloud Platform.
+
 ## Create a budget alert
 
 All GCP services are paying, and remember that you entered your credit card in GCP on setup day.

@@ -173,3 +173,33 @@ python -m TaxiFareModel.trainer
 ```
 
 ... And verify that it logged correctly on https://mlflow.lewagon.co/
+
+<details>
+  <summary markdown='span'><strong> 💡 Finding your experiment easily in https://mlflow.lewagon.co/ </strong></summary>
+
+The easiest way to find your experiment without scrolling through the list of experiments is by using its `id`.
+
+In order to do that, you can retrieve the `id` of the experiment in your code after the model has been trained for example:
+
+``` python
+experiment_id = trainer.mlflow_experiment_id
+
+print(f"experiment URL: https://mlflow.lewagon.co/#/experiments/{experiment_id}")
+```
+
+Another option is to use the name of your experiment in order to retrieve its id.
+
+🚨 Replace the content of `EXPERIMENT_NAME` before running this in `ipython` for example.
+
+``` python
+import mlflow
+from mlflow.tracking import MlflowClient
+
+mlflow.set_tracking_uri("https://mlflow.lewagon.co/")
+
+EXPERIMENT_NAME = "test_experiment"
+experiment_id = MlflowClient().get_experiment_by_name(EXPERIMENT_NAME).experiment_id
+print(f"experiment URL: https://mlflow.lewagon.co/#/experiments/{experiment_id}")
+```
+
+</details>
