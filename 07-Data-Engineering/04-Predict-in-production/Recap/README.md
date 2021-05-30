@@ -138,10 +138,10 @@ Once the code is done, call the endpoint using the **api usage.ipynb** notebook,
 
 Here is the print of our DataFrame:
 
-``` bash
-Unnamed: 0   key          pickup_datetime  pickup_longitude  pickup_latitude  dropoff_longitude  dropoff_latitude  passenger_count
-0          0  truc  2020-12-12 12:12:12 UTC         41.123456        41.123456          41.123456         41.123456                3
-```
+  ```
+                           key          pickup_datetime  pickup_longitude  pickup_latitude  dropoff_longitude  dropoff_latitude  passenger_count
+  0  2009-06-15 17:26:21.0000001  2009-06-15 17:26:21 UTC        -73.844311        40.721319          -73.84161         40.712278                1
+  ```
 
 Here we can see the call to our API that we just made using the notebook (notice how we see the parameters passed in the URL):
 

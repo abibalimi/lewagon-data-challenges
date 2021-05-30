@@ -224,10 +224,6 @@ pip install -e .
 You can now run your script anywhere on your machine:
 
 ```bash
-mlproject-computedist --help
-```
-
-```bash
 mlproject-computedist --coords 48.865070 2.380009 48.235070 2.393409
 ```
 
