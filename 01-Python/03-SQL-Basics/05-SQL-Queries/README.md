@@ -13,11 +13,6 @@ Complete the code in `queries.py`. Each function takes a `db` argument, which is
 - Implement `detailed_movies` to get all the movie titles with the corresponding genre and director name.
 - This function should return a list of tuples like (`title`, `genre`, `name`).
 
-### Top 5 youngest newly directors
-
-- Implement `top_five_youngest_newly_directors` to get the top 5 youngest directors when directing their first movie.
-- This function should return a list of tuples like (`name`, `age_when_first_time_director`).
-
 ### Late released movies
 
 - Implement `never_watched_movies` to get the list of all movies which were released after their director passed away.
@@ -71,3 +66,7 @@ movie_duration_buckets(db)
 => [(30, 292), (60, 764), (90, 1362), [...],(690, 2), (900, 1), (1020, 1)]
 ```
 
+### Top 5 youngest newly directors
+
+- Implement `top_five_youngest_newly_directors` to get the top 5 youngest directors when directing their first movie.
+- This function should return a list of tuples like (`name`, `age_when_first_time_director`).
