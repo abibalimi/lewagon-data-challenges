@@ -16,6 +16,28 @@ There are 2 remaining steps in order to enable the developers from anywhere arou
 The role of **Container Registry** will be to act as a storage for our Docker image.
 The role of **Cloud Run** will be to run a Docker container instantiated from our image.
 
+🚨 If you are an **Apple Silicon** user, skip this challenge and proceed with the **CD to Cloud Run** challenge.
+
+<details>
+  <summary markdown='span'><strong> 💡 How do I know whether my Mac is an Apple Silicon computer ? </strong></summary>
+
+Copy-paste the following command in the terminal and hit `Enter` to execute the command.
+
+``` bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/lewagon/setup/master/utils/osx_list_processor_type.sh)"
+```
+
+☝️ The result of the command should indicate whether your computer uses Apple Silicon or Intel.
+
+</details>
+
+<details>
+  <summary markdown='span'><strong> 💡 Why ? </strong></summary>
+
+If your computer uses Apple Silicon, the images built by Docker are using ARM processor instructions. The machines running in Google Cloud Platform are running on x86 compatible processors, as are the vast majority of the machines of the cloud service providers. Because ARM and x86 processor instructions are not compatible with one another, it will not be possible to run an image built from Docker running on an Apple Silicon machine in Cloud Run.
+
+</details>
+
 ## Push our prediction API image to Google Container Registry
 
 **Google Container Registry** is a service storing Docker images on the cloud with the purpose of allowing **Cloud Run** or **Kubernetes Engine** to serve them.

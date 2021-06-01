@@ -51,6 +51,8 @@ We also need a corresponding repository on **GitHub** on which to sync our code:
 gh repo create
 ```
 
+🚨 Pay attention to the name of the repository that you create: **Container Registry** will only work correctly with repositories having a name following the [kebab-case naming convention](https://betterprogramming.pub/string-case-styles-camel-pascal-snake-and-kebab-case-981407998841): `my-repo-name`
+
 Now that the project is setup, let's start coding! 🚀
 
 ### api.py
@@ -145,7 +147,7 @@ Install the **Google Cloud Build** app on the project repository:
 - Click **Install Google Cloud Build**
 - If asked to, select the your GitHub account
 - Check **Only selected repositories**
-- Select the repository of your project
+- Select the repository of your project (🚨 **Container Registry** will only work correctly with repositories having a name following the [kebab-case naming convention](https://betterprogramming.pub/string-case-styles-camel-pascal-snake-and-kebab-case-981407998841): `my-repo-name`)
 - Click **Install**
 
 Select the source repository:
@@ -177,7 +179,7 @@ Boom, just like that your container is in production and you did not even had to
 
 If you see a sad unicorn, do not worry, it is just there while **Cloud Build** is building your Docker image before pushing it to **Cloud Run**.
 
-<a href="https://raw.githubusercontent.com/lewagon/data-challenges/master/07-Data-Engineering/04-Predict-in-production/07-Cloud-Run-CD/cloud-build-sad-unicorn.png?token=AIH3SZZ4JELYZRFAKHR45DDAWYU7U"><img src="https://raw.githubusercontent.com/lewagon/data-challenges/master/07-Data-Engineering/04-Predict-in-production/07-Cloud-Run-CD/cloud-build-sad-unicorn.png?token=AIH3SZZ4JELYZRFAKHR45DDAWYU7U" width="150" alt="sad unicorn"></a>
+<a href="https://raw.githubusercontent.com/lewagon/data-images/master/DE/cloud-build-sad-unicorn.png"><img src="https://raw.githubusercontent.com/lewagon/data-images/master/DE/cloud-build-sad-unicorn.png" width="150" alt="sad unicorn"></a>
 
 Once your application is in production, as usual you will see the built image stored in [Container Registry](https://console.cloud.google.com/gcr).
 
