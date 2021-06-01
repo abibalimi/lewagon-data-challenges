@@ -35,6 +35,8 @@ You should see the entire project structure created by the `packgenlite` tool.
 
 Let's use the [Breaking Bad API](https://breaking-bad-quotes.herokuapp.com/v1/quotes) in order to create a **get_quote** method and add it to our package.
 
+Alternatively, use the [Movie Quotes API](https://movie-quote-api.herokuapp.com/v1/quote/).
+
 <details>
   <summary markdown='span'><strong>💡 Hint </strong></summary>
 
@@ -52,6 +54,7 @@ import requests
 
 
 def get_quote():
+    # url = 'https://movie-quote-api.herokuapp.com/v1/quote/'  # alternative API
     url = 'https://breaking-bad-quotes.herokuapp.com/v1/quotes'
     response = requests.get(url).json()[0]
 
