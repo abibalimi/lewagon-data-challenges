@@ -50,7 +50,7 @@ You just ran all the tests under `test/`.
 
 You will now test the `haversine()` function:
 
-- Create a `distance_test.py` file under `tests/` testing your `haversine()` function.
+- Create a `test_distance.py` file under `tests/` testing your `haversine()` function.
   *But what should I test? 🤔*
   You want to make sure the functionality of your function is correct. You can check if the distance between given coordinates is valid or if the type returned by it is the right one. It's up to you!
 

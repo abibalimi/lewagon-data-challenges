@@ -16,7 +16,7 @@ The goal of this challenge is to use [Window Functions](https://mode.com/sql-tut
 
 ### Order cumulative amount per customer
 
-- Implement `order_cumulative_amount_per_customer` to compute the cumulative amount of the orders of each customer according to the order date.
+- Implement `order_cumulative_amount_per_customer` to compute the cumulative amount (in USD) of the orders of each customer according to the order date.
 - For each customer, the orders should be ranked in the chronological order.
 - This function should return a list of tuples like (`OrderID`, `CustomerID`, `OrderDate`, `OrderCumulativeAmount`).
 
