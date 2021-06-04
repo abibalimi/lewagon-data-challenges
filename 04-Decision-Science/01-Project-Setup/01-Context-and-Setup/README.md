@@ -102,6 +102,7 @@ cd ~/code/<user.github_nickname>/data-challenges/04-Decision-Science && echo "ex
 ⚠️ Restart all your terminal windows to take into account this change.
 
 
+
 ### 🔥 Check your setup
 
 Go to your `01-Project-Setup` folder and run an `ipython` session:
@@ -120,3 +121,14 @@ Olist().ping()
 ```
 
 If you get something else than `pong`, raise a ticket to get some help from a TA. You might have a problem with the `$PYTHONPATH`.
+
+## Push your code on GitHub
+
+Go back to the Decision Science directory, commit and push your code:
+
+```bash
+cd ~/code/<user.github_nickname>/data-challenges/04-Decision-Science
+git add .
+git commit -m 'kick off olist challenge'
+git push origin master
+```

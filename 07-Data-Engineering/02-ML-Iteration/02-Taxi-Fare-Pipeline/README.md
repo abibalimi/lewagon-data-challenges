@@ -4,6 +4,6 @@ Apply pipelines on a concrete example.
 
 # Exercise
 
-Here you will create your first pipeline on a real life example.
+No coding here either - this challenge is a reminder about pipelines on a real life example.
 
-Open the `Taxifare-Pipeline.ipynb` notebook and follow the steps.
+Open the `Taxifare-Pipeline.ipynb` notebook and follow the implemented steps.
