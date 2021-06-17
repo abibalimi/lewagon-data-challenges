@@ -16,7 +16,8 @@ __pycache__
 *.egg-info
 *.csv
 *.zip
-*.txt
+05-ML/**/*.txt
+06-Deep-Learning/**/*.txt
 mlruns
 
 # IDE #
