@@ -4,7 +4,7 @@ Now it is time to make advanced SQL requests to an `ecommerce` database!
 
 ## Specs
 
-Open the file `query_db.py` to answer the following questions. Don't forget you can look inside the database by using DBeaver.
+Open the file `queries.py` to answer the following questions. Don't forget you can look inside the database by using DBeaver.
 
 There are three methods to implement:
 

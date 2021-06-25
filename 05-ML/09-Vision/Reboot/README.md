@@ -1,1 +1,0 @@
-Singular Value Decomposition (SVD) is a matrix decomposition method. It splits a matrix into multiple pieces: when these matrices are multiplied, you get back the initial matrix. We'll see the intuition behind SVD and then why this is useful with the example of image compression.

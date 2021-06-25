@@ -24,7 +24,7 @@ The role of **Cloud Run** will be to run a Docker container instantiated from ou
 Copy-paste the following command in the terminal and hit `Enter` to execute the command.
 
 ``` bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/lewagon/setup/master/utils/osx_list_processor_type.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/lewagon/setup/master/utils/macos_list_processor_type.sh)"
 ```
 
 ☝️ The result of the command should indicate whether your computer uses Apple Silicon or Intel.
